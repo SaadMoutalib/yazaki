@@ -21,6 +21,7 @@ namespace yazaki.UserInterfaces
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            errormessage.Text = "";
             if (idTextBox.Text.Length == 0)
             {
                 errormessage.Text = "Entrez un Identifiant";
@@ -49,7 +50,7 @@ namespace yazaki.UserInterfaces
                 }
                 else
                 {
-                    new HomeWindow().Show();
+                    new HomeWindow(formateur).Show();
                     this.Close();
                 }
             }

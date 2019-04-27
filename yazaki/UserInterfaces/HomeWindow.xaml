@@ -15,8 +15,8 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Width="70" TextDecorations="{x:Null}" TextAlignment="Center" Text="Logged in as"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Width="65" TextDecorations="{x:Null}" TextAlignment="Center" Text="test"/>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Width="70" TextDecorations="{x:Null}" TextAlignment="Center" Text="Logged in as"/>
+                <TextBlock Margin="5" Name="userLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Width="auto" TextDecorations="{x:Null}" TextAlignment="Center"/>
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                     <materialDesign:PackIcon Kind="Logout" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>

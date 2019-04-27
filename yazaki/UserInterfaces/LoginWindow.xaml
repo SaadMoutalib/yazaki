@@ -32,7 +32,7 @@
         </Grid>
         <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100,0,100,85" Content="LOGIN" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="loginButton" Click="loginButton_Click"/>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="142,0,142,60" Foreground="Gray" Cursor="Hand" Width="65" TextDecorations="{x:Null}" TextAlignment="Center" Text="SIGN UP"/>
-        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="280" Margin="35,450,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
+        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="auto" Margin="35,450,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
         <Grid Height="100" VerticalAlignment="Top">
             <Image Source="../Assets/Yazaki_company_logo.png" Height="50" VerticalAlignment="Bottom" Stretch="Fill" HorizontalAlignment="Center" Width="270"/>
             <Button x:Name="exitButton" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" RenderTransformOrigin="-0.305,0.467" Click="exitButton_Click">

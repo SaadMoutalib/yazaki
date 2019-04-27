@@ -10,10 +10,13 @@ namespace yazaki.UserInterfaces
     /// </summary>
     public partial class HomeWindow : Window
     {
-        public HomeWindow()
+        Formateur user;
+        public HomeWindow(Formateur f)
         {
             InitializeComponent();
             GridMain.Children.Add(new UserControlAjouterC());
+            user = f;
+            userLabel.Text = f.nom+" "+f.prenom;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
