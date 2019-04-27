@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace yazaki.Data
 {
-    class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private YazakiContext Context;
+        private DbContext Context;
         private readonly DbSet<T> Entities;
 
-        public Repository(YazakiContext context)
+        public Repository(DbContext context)
         {
             Context = context;
             Entities = Context.Set<T>();
@@ -46,29 +46,5 @@ namespace yazaki.Data
             return Entities.Where(predicate).FirstOrDefault();
         }
 
-        public void Save()
-        {
-            Context.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    Context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
     }
 }
