@@ -1,4 +1,4 @@
-﻿<Window x:Class="yazaki.LoginWindow"
+﻿<Window x:Class="yazaki.UserInterfaces.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:yazaki"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Login" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="Assets/KSuxeMws_400x400.png">
+        Title="Login" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="../Assets/KSuxeMws_400x400.png">
     <Grid>
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -34,7 +34,7 @@
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="142,0,142,60" Foreground="Gray" Cursor="Hand" Width="65" TextDecorations="{x:Null}" TextAlignment="Center" Text="SIGN UP"/>
         <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="280" Margin="35,450,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
         <Grid Height="100" VerticalAlignment="Top">
-            <Image Source="Assets/Yazaki_company_logo.png" Height="50" VerticalAlignment="Bottom" Stretch="Fill" HorizontalAlignment="Center" Width="270"/>
+            <Image Source="../Assets/Yazaki_company_logo.png" Height="50" VerticalAlignment="Bottom" Stretch="Fill" HorizontalAlignment="Center" Width="270"/>
             <Button x:Name="exitButton" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" RenderTransformOrigin="-0.305,0.467" Click="exitButton_Click">
                 <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
             </Button>

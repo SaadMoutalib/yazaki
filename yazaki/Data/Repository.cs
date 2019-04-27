@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace yazaki
+namespace yazaki.Data
 {
     class Repository<T> : IRepository<T> where T : class
     {

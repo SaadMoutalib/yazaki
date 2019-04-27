@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace yazaki
+namespace yazaki.Data
 {
     interface IRepository<T> where T : class
     {

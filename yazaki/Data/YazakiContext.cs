@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace yazaki
+namespace yazaki.Data
 {
     class YazakiContext : DbContext
     {
