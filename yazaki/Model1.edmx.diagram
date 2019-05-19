@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3313e9294b8343b1b4dfd4969a227594" Name="Diagram1">
-        <EntityTypeShape EntityType="yazakiDBModel.Formateur" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="yazakiDBModel.Operateur" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="yazakiDBModel.Test" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="yazakiDBModel.FK_Test_Formateurs" ManuallyRouted="false" />
-        <AssociationConnector Association="yazakiDBModel.FK_Test_Operateurs" ManuallyRouted="false" />
+      <Diagram DiagramId="3b79faa2f1534c1296e181c01896313d" Name="Diagram1">
+        <EntityTypeShape EntityType="yazakiModel.Formateurs" Width="1.5" PointX="4" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yazakiModel.Operateurs" Width="1.5" PointX="3.625" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="yazakiModel.Test" Width="1.5" PointX="8" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="yazakiModel.Coordonnees" Width="1.5" PointX="1" PointY="1.5" />
+        <AssociationConnector Association="yazakiModel.FK_Coordonnees_Formateurs" />
+        <AssociationConnector Association="yazakiModel.FK_Coordonnees_Operateurs" />
+        <AssociationConnector Association="yazakiModel.FK_Test_Formateurs" />
+        <AssociationConnector Association="yazakiModel.FK_Test_Operateurs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

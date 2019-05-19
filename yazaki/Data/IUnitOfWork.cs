@@ -8,8 +8,8 @@ namespace yazaki.Data
 {
     public interface IUnitOfWork : IDisposable
     {
-        Repository<Formateur> Formateurs { get; }
-        Repository<Operateur> Operateurs { get; }
+        Repository<Formateurs> Formateurs { get; }
+        Repository<Operateurs> Operateurs { get; }
         Repository<Test> Tests { get; }
     }
 }

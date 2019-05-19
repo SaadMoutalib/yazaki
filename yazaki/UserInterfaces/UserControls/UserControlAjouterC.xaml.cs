@@ -21,12 +21,7 @@ namespace yazaki.UserInterfaces.UserControls
         {
             succesmessage.Text = "";
             errormessage.Text = "";
-            if (idTextBox.Text.Length == 0)
-            {
-                errormessage.Text = "Entrez un Identifiant";
-                idTextBox.Focus();
-            }
-            else if (nomTextBox.Text.Length == 0)
+             if (nomTextBox.Text.Length == 0)
             {
                 errormessage.Text = "Entrez un Nom";
                 nomTextBox.Focus();
@@ -37,8 +32,7 @@ namespace yazaki.UserInterfaces.UserControls
                 prenomTextBox.Focus();
             }
             else { 
-                Operateur oper = new Operateur();
-                oper.Id = Convert.ToInt32(idTextBox.Text);
+                Operateurs oper = new Operateurs();
                 oper.nom = nomTextBox.Text;
                 oper.prenom = prenomTextBox.Text;
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
