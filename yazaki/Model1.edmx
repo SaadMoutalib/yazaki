@@ -15,6 +15,15 @@
           <Property Name="Sexe" Type="varchar" MaxLength="1" />
           <Property Name="Tel" Type="varchar" MaxLength="10" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="postalCode" Type="int" />
+          <Property Name="civilStatus" Type="varchar" MaxLength="50" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="jobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="educationLevel" Type="varchar" MaxLength="50" />
+          <Property Name="graduationDate" Type="date" />
+          <Property Name="dateOfEmployment" Type="date" />
+          <Property Name="departementName" Type="varchar" MaxLength="50" />
+          <Property Name="dateOfStartingWorkInDep" Type="date" />
         </EntityType>
         <EntityType Name="Formateurs">
           <Key>
@@ -43,6 +52,7 @@
           <Property Name="niveau" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="resultat" Type="float" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="passed" Type="bit" Nullable="false" />
           <Property Name="id_op" Type="int" Nullable="false" />
           <Property Name="id_form" Type="int" Nullable="false" />
         </EntityType>
@@ -155,6 +165,7 @@
           <Property Name="nom_test" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Formateur" Relationship="yazakiModel.FK_Test_Formateurs" FromRole="Test" ToRole="Formateurs" />
           <NavigationProperty Name="Operateur" Relationship="yazakiModel.FK_Test_Operateurs" FromRole="Test" ToRole="Operateurs" />
+          <Property Name="passed" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="yazakiDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Formateurs" EntityType="Self.Formateurs" />
@@ -190,6 +201,15 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Formateur" Relationship="yazakiModel.FK_Coordonnees_Formateurs" FromRole="Coordonnees" ToRole="Formateurs" />
           <NavigationProperty Name="Operateur" Relationship="yazakiModel.FK_Coordonnees_Operateurs" FromRole="Coordonnees" ToRole="Operateurs" />
+          <Property Name="postalCode" Type="Int32" />
+          <Property Name="civilStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="jobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="educationLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="graduationDate" Type="DateTime" Precision="0" />
+          <Property Name="dateOfEmployment" Type="DateTime" Precision="0" />
+          <Property Name="departementName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfStartingWorkInDep" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Coordonnees_Formateurs">
           <End Type="yazakiModel.Formateurs" Role="Formateurs" Multiplicity="1" />
@@ -267,6 +287,7 @@
           <EntitySetMapping Name="Test">
             <EntityTypeMapping TypeName="yazakiModel.Test">
               <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="passed" ColumnName="passed" />
                 <ScalarProperty Name="nom_test" ColumnName="nom_test" />
                 <ScalarProperty Name="niveau" ColumnName="niveau" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -281,6 +302,15 @@
           <EntitySetMapping Name="Coordonnees">
             <EntityTypeMapping TypeName="yazakiModel.Coordonnees">
               <MappingFragment StoreEntitySet="Coordonnees">
+                <ScalarProperty Name="dateOfStartingWorkInDep" ColumnName="dateOfStartingWorkInDep" />
+                <ScalarProperty Name="departementName" ColumnName="departementName" />
+                <ScalarProperty Name="dateOfEmployment" ColumnName="dateOfEmployment" />
+                <ScalarProperty Name="graduationDate" ColumnName="graduationDate" />
+                <ScalarProperty Name="educationLevel" ColumnName="educationLevel" />
+                <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="civilStatus" ColumnName="civilStatus" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Tel" ColumnName="Tel" />
                 <ScalarProperty Name="Sexe" ColumnName="Sexe" />
