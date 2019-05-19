@@ -12,13 +12,13 @@ namespace yazaki.Data
         public UnitOfWork(yazakiDBEntities context)
         {
             _context = context;
-            Formateurs = new Repository<Formateur>(context);
-            Operateurs = new Repository<Operateur>(context);
+            Formateurs = new Repository<Formateurs>(context);
+            Operateurs = new Repository<Operateurs>(context);
             Tests = new Repository<Test>(context);
         }
-        public Repository<Formateur> Formateurs { get; private set; }
+        public Repository<Formateurs> Formateurs { get; private set; }
 
-        public Repository<Operateur> Operateurs { get; private set; }
+        public Repository<Operateurs> Operateurs { get; private set; }
 
         public Repository<Test> Tests { get; private set; }
 

@@ -37,7 +37,7 @@ namespace yazaki.UserInterfaces
                 int id = Convert.ToInt32(idTextBox.Text);
                 string password = passwordBox.Password;
 
-                Formateur formateur;
+                Formateurs formateur;
 
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
                 {

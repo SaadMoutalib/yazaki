@@ -10,8 +10,8 @@ namespace yazaki.UserInterfaces
     /// </summary>
     public partial class HomeWindow : Window
     {
-        Formateur user;
-        public HomeWindow(Formateur f)
+        Formateurs user;
+        public HomeWindow(Formateurs f)
         {
             InitializeComponent();
             GridMain.Children.Add(new UserControlAjouterC());

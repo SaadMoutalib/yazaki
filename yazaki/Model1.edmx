@@ -4,37 +4,74 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="yazakiDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="yazakiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Coordonnees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Ville" Type="varchar" MaxLength="50" />
+          <Property Name="Adresse" Type="varchar" MaxLength="50" />
+          <Property Name="Sexe" Type="varchar" MaxLength="1" />
+          <Property Name="Tel" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Formateurs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="nom" Type="nchar" MaxLength="10" />
-          <Property Name="prenom" Type="nchar" MaxLength="10" />
-          <Property Name="password" Type="nchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Operateurs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="nom" Type="nchar" MaxLength="10" />
-          <Property Name="prenom" Type="nchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Test">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="type" Type="nchar" MaxLength="10" />
-          <Property Name="resultat" Type="float" />
-          <Property Name="date" Type="date" />
-          <Property Name="id_op" Type="int" />
-          <Property Name="id_form" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_test" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="niveau" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resultat" Type="float" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="id_op" Type="int" Nullable="false" />
+          <Property Name="id_form" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Coordonnees_Formateurs">
+          <End Role="Formateurs" Type="Self.Formateurs" Multiplicity="1" />
+          <End Role="Coordonnees" Type="Self.Coordonnees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Formateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coordonnees">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coordonnees_Operateurs">
+          <End Role="Operateurs" Type="Self.Operateurs" Multiplicity="1" />
+          <End Role="Coordonnees" Type="Self.Coordonnees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Operateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coordonnees">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Test_Formateurs">
-          <End Role="Formateurs" Type="Self.Formateurs" Multiplicity="0..1" />
+          <End Role="Formateurs" Type="Self.Formateurs" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Formateurs">
@@ -46,7 +83,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Test_Operateurs">
-          <End Role="Operateurs" Type="Self.Operateurs" Multiplicity="0..1" />
+          <End Role="Operateurs" Type="Self.Operateurs" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Operateurs">
@@ -57,10 +94,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="yazakiDBModelStoreContainer">
+        <EntityContainer Name="yazakiModelStoreContainer">
+          <EntitySet Name="Coordonnees" EntityType="Self.Coordonnees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formateurs" EntityType="Self.Formateurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operateurs" EntityType="Self.Operateurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Coordonnees_Formateurs" Association="Self.FK_Coordonnees_Formateurs">
+            <End Role="Formateurs" EntitySet="Formateurs" />
+            <End Role="Coordonnees" EntitySet="Coordonnees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coordonnees_Operateurs" Association="Self.FK_Coordonnees_Operateurs">
+            <End Role="Operateurs" EntitySet="Operateurs" />
+            <End Role="Coordonnees" EntitySet="Coordonnees" />
+          </AssociationSet>
           <AssociationSet Name="FK_Test_Formateurs" Association="Self.FK_Test_Formateurs">
             <End Role="Formateurs" EntitySet="Formateurs" />
             <End Role="Test" EntitySet="Test" />
@@ -70,46 +116,108 @@
             <End Role="Test" EntitySet="Test" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="yazakiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Formateur">
+      <Schema Namespace="yazakiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Formateurs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="nom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="prenom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Formateurs" FromRole="Formateurs" ToRole="Test" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Coordonnee" Relationship="yazakiModel.FK_Coordonnees_Formateurs" FromRole="Formateurs" ToRole="Coordonnees" />
+          <NavigationProperty Name="Tests" Relationship="yazakiModel.FK_Test_Formateurs" FromRole="Formateurs" ToRole="Test" />
         </EntityType>
-        <EntityType Name="Operateur">
+        <EntityType Name="Operateurs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="nom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="prenom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Operateurs" FromRole="Operateurs" ToRole="Test" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Coordonnee" Relationship="yazakiModel.FK_Coordonnees_Operateurs" FromRole="Operateurs" ToRole="Coordonnees" />
+          <NavigationProperty Name="Tests" Relationship="yazakiModel.FK_Test_Operateurs" FromRole="Operateurs" ToRole="Test" />
         </EntityType>
         <EntityType Name="Test">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="resultat" Type="Double" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-          <Property Name="id_op" Type="Int32" />
-          <Property Name="id_form" Type="Int32" />
-          <NavigationProperty Name="Formateur" Relationship="Self.FK_Test_Formateurs" FromRole="Test" ToRole="Formateurs" />
-          <NavigationProperty Name="Operateur" Relationship="Self.FK_Test_Operateurs" FromRole="Test" ToRole="Operateurs" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="resultat" Type="Double" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="id_op" Type="Int32" Nullable="false" />
+          <Property Name="id_form" Type="Int32" Nullable="false" />
+          <Property Name="niveau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_test" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Formateur" Relationship="yazakiModel.FK_Test_Formateurs" FromRole="Test" ToRole="Formateurs" />
+          <NavigationProperty Name="Operateur" Relationship="yazakiModel.FK_Test_Operateurs" FromRole="Test" ToRole="Operateurs" />
         </EntityType>
+        <EntityContainer Name="yazakiDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Formateurs" EntityType="Self.Formateurs" />
+          <EntitySet Name="Operateurs" EntityType="Self.Operateurs" />
+          <EntitySet Name="Test" EntityType="Self.Test" />
+          <EntitySet Name="Coordonnees" EntityType="yazakiModel.Coordonnees" />
+          <AssociationSet Name="FK_Coordonnees_Formateurs" Association="yazakiModel.FK_Coordonnees_Formateurs">
+            <End Role="Formateurs" EntitySet="Formateurs" />
+            <End Role="Coordonnees" EntitySet="Coordonnees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coordonnees_Operateurs" Association="yazakiModel.FK_Coordonnees_Operateurs">
+            <End Role="Operateurs" EntitySet="Operateurs" />
+            <End Role="Coordonnees" EntitySet="Coordonnees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Formateurs" Association="yazakiModel.FK_Test_Formateurs">
+            <End Role="Formateurs" EntitySet="Formateurs" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Operateurs" Association="yazakiModel.FK_Test_Operateurs">
+            <End Role="Operateurs" EntitySet="Operateurs" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Coordonnees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexe" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Formateur" Relationship="yazakiModel.FK_Coordonnees_Formateurs" FromRole="Coordonnees" ToRole="Formateurs" />
+          <NavigationProperty Name="Operateur" Relationship="yazakiModel.FK_Coordonnees_Operateurs" FromRole="Coordonnees" ToRole="Operateurs" />
+        </EntityType>
+        <Association Name="FK_Coordonnees_Formateurs">
+          <End Type="yazakiModel.Formateurs" Role="Formateurs" Multiplicity="1" />
+          <End Type="yazakiModel.Coordonnees" Role="Coordonnees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Formateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coordonnees">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coordonnees_Operateurs">
+          <End Type="yazakiModel.Operateurs" Role="Operateurs" Multiplicity="1" />
+          <End Type="yazakiModel.Coordonnees" Role="Coordonnees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Operateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coordonnees">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Test_Formateurs">
-          <End Role="Formateurs" Type="Self.Formateur" Multiplicity="0..1" />
-          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <End Type="yazakiModel.Formateurs" Role="Formateurs" Multiplicity="1" />
+          <End Type="yazakiModel.Test" Role="Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Formateurs">
               <PropertyRef Name="Id" />
@@ -120,8 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Test_Operateurs">
-          <End Role="Operateurs" Type="Self.Operateur" Multiplicity="0..1" />
-          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <End Type="yazakiModel.Operateurs" Role="Operateurs" Multiplicity="1" />
+          <End Type="yazakiModel.Test" Role="Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Operateurs">
               <PropertyRef Name="Id" />
@@ -131,27 +239,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="yazakiDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Formateurs" EntityType="Self.Formateur" />
-          <EntitySet Name="Operateurs" EntityType="Self.Operateur" />
-          <EntitySet Name="Tests" EntityType="Self.Test" />
-          <AssociationSet Name="FK_Test_Formateurs" Association="Self.FK_Test_Formateurs">
-            <End Role="Formateurs" EntitySet="Formateurs" />
-            <End Role="Test" EntitySet="Tests" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Test_Operateurs" Association="Self.FK_Test_Operateurs">
-            <End Role="Operateurs" EntitySet="Operateurs" />
-            <End Role="Test" EntitySet="Tests" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="yazakiDBModelStoreContainer" CdmEntityContainer="yazakiDBEntities">
+        <EntityContainerMapping StorageEntityContainer="yazakiModelStoreContainer" CdmEntityContainer="yazakiDBEntities">
           <EntitySetMapping Name="Formateurs">
-            <EntityTypeMapping TypeName="yazakiDBModel.Formateur">
+            <EntityTypeMapping TypeName="yazakiModel.Formateurs">
               <MappingFragment StoreEntitySet="Formateurs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -161,7 +256,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Operateurs">
-            <EntityTypeMapping TypeName="yazakiDBModel.Operateur">
+            <EntityTypeMapping TypeName="yazakiModel.Operateurs">
               <MappingFragment StoreEntitySet="Operateurs">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -169,15 +264,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tests">
-            <EntityTypeMapping TypeName="yazakiDBModel.Test">
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="yazakiModel.Test">
               <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="nom_test" ColumnName="nom_test" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="resultat" ColumnName="resultat" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="id_op" ColumnName="id_op" />
                 <ScalarProperty Name="id_form" ColumnName="id_form" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coordonnees">
+            <EntityTypeMapping TypeName="yazakiModel.Coordonnees">
+              <MappingFragment StoreEntitySet="Coordonnees">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -195,7 +304,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />

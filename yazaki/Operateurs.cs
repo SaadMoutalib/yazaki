@@ -12,18 +12,20 @@ namespace yazaki
     using System;
     using System.Collections.Generic;
     
-    public partial class Test
+    public partial class Operateurs
     {
-        public int Id { get; set; }
-        public string type { get; set; }
-        public double resultat { get; set; }
-        public System.DateTime date { get; set; }
-        public int id_op { get; set; }
-        public int id_form { get; set; }
-        public string niveau { get; set; }
-        public string nom_test { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Operateurs()
+        {
+            this.Tests = new HashSet<Test>();
+        }
     
-        public virtual Formateurs Formateur { get; set; }
-        public virtual Operateurs Operateur { get; set; }
+        public int Id { get; set; }
+        public string nom { get; set; }
+        public string prenom { get; set; }
+    
+        public virtual Coordonnees Coordonnee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Test> Tests { get; set; }
     }
 }

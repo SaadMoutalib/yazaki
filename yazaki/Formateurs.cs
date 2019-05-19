@@ -12,10 +12,10 @@ namespace yazaki
     using System;
     using System.Collections.Generic;
     
-    public partial class Formateur
+    public partial class Formateurs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Formateur()
+        public Formateurs()
         {
             this.Tests = new HashSet<Test>();
         }
@@ -25,6 +25,7 @@ namespace yazaki
         public string prenom { get; set; }
         public string password { get; set; }
     
+        public virtual Coordonnees Coordonnee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test> Tests { get; set; }
     }

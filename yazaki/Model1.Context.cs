@@ -25,8 +25,9 @@ namespace yazaki
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Formateur> Formateurs { get; set; }
-        public virtual DbSet<Operateur> Operateurs { get; set; }
-        public virtual DbSet<Test> Tests { get; set; }
+        public virtual DbSet<Formateurs> Formateurs { get; set; }
+        public virtual DbSet<Operateurs> Operateurs { get; set; }
+        public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<Coordonnees> Coordonnees { get; set; }
     }
 }
