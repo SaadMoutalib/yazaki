@@ -39,6 +39,19 @@ namespace yazaki.UserInterfaces
             formateur = form;
             niveau = _niveau;
             nomLbl.Content = op.FullName;
+
+            if (niveau == "Debutant")
+            {
+                time = 3600;
+            }
+            else if (niveau == "Intérmediare")
+            {
+                time = 2400;
+            }
+            else
+            {
+                time = 1800;
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)

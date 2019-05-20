@@ -29,7 +29,7 @@ namespace yazaki.UserInterfaces
         private String niveau;
 
         private int Score = 0;
-        private int time = 3600;
+        private int time;
 
         public TestInsertion(String _niveau,Operateurs op,Formateurs form)
         {
@@ -38,6 +38,17 @@ namespace yazaki.UserInterfaces
             formateur = form;
             operateur = op;
             nomLbl.Content = op.FullName;
+
+            if(niveau == "Debutant")
+            {
+                time = 3600;
+            }else if(niveau == "Intérmediare")
+            {
+                time = 2400;
+            }
+            else{
+                time = 1800;
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)

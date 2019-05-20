@@ -37,13 +37,19 @@ namespace yazaki.UserInterfaces
                     break;
                 case 2:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlresultats());
+                    GridMain.Children.Add(new UserControlCandidats());
                     break;
                 case 3:
                     GridMain.Children.Clear();
                     GridMain.Children.Add(new UserControlAjouterF());
                     break;
             }
+        }
+
+        private void logOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            new LoginWindow().Show();
+            this.Close();
         }
     }
 }

@@ -212,8 +212,8 @@
     <Compile Include="UserInterfaces\UserControls\UserControlAjouterF.xaml.cs">
       <DependentUpon>UserControlAjouterF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaces\UserControls\UserControlresultats.xaml.cs">
-      <DependentUpon>UserControlresultats.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\UserControls\UserControlCandidats.xaml.cs">
+      <DependentUpon>UserControlCandidats.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\UserControls\UserControlTest.xaml.cs">
       <DependentUpon>UserControlTest.xaml</DependentUpon>
@@ -250,7 +250,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterfaces\UserControls\UserControlresultats.xaml">
+    <Page Include="UserInterfaces\UserControls\UserControlCandidats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
