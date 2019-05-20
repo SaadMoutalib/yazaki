@@ -10,8 +10,23 @@ namespace yazaki.UserInterfaces.UserControls
     /// </summary>
     public partial class UserControlTest : UserControl
     {
-        public UserControlTest()
+        private Operateurs operateur;
+        private Formateurs formateur;
+
+        public UserControlTest(Operateurs op,Formateurs form)
         {
+            InitializeComponent();
+            List<Operateurs> ops = new List<Operateurs>();
+            ops.Add(op);
+            DataContext = ops;
+            opCombo.SelectedIndex = 0;
+            opCombo.IsEnabled = false;
+            formateur = form;
+        }
+
+        public UserControlTest(Formateurs form)
+        {
+            formateur = form;
             InitializeComponent();
             bindComboBox();
         }
@@ -33,10 +48,13 @@ namespace yazaki.UserInterfaces.UserControls
             }
             else
             {
-                var op = opCombo.SelectedItem as Operateurs;
+                operateur = opCombo.SelectedItem as Operateurs;
                 if (type.Text == "Insertion")
                 {
-                    new TestInsertion(niveau.Text, op).Show();
+                    new TestInsertion(niveau.Text, operateur,formateur).Show();
+                }else if(type.Text == "Cramping")
+                {
+                    new TestCramping(niveau.Text, operateur, formateur).Show();
                 }
             }
             

@@ -14,7 +14,7 @@ namespace yazaki.UserInterfaces
         public HomeWindow(Formateurs f)
         {
             InitializeComponent();
-            GridMain.Children.Add(new UserControlAjouterC());
+            GridMain.Children.Add(new UserControlAjouterC(f));
             user = f;
             userLabel.Text = f.nom+" "+f.prenom;
         }
@@ -29,11 +29,11 @@ namespace yazaki.UserInterfaces
             {
                 case 0:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlAjouterC());
+                    GridMain.Children.Add(new UserControlAjouterC(user));
                     break;
                 case 1:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlTest());
+                    GridMain.Children.Add(new UserControlTest(user));
                     break;
                 case 2:
                     GridMain.Children.Clear();

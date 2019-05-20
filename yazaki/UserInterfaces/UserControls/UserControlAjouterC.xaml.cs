@@ -12,16 +12,27 @@ namespace yazaki.UserInterfaces.UserControls
     /// </summary>
     public partial class UserControlAjouterC : UserControl
     {
-        public UserControlAjouterC()
+        private Formateurs formateur;
+
+        public UserControlAjouterC(Formateurs form)
         {
             InitializeComponent();
+            formateur = form;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            Operateurs oper = ajouterOperateur();
+        }
+
+        private Operateurs ajouterOperateur()
+        {
             succesmessage.Text = "";
             errormessage.Text = "";
-             if (nomTextBox.Text.Length == 0)
+
+            Operateurs oper = new Operateurs();
+            Coordonnees cord = new Coordonnees();
+            if (nomTextBox.Text.Length == 0)
             {
                 errormessage.Text = "Entrez un Nom";
                 nomTextBox.Focus();
@@ -31,9 +42,8 @@ namespace yazaki.UserInterfaces.UserControls
                 errormessage.Text = "Entrez un Prenom";
                 prenomTextBox.Focus();
             }
-            else { 
-                Operateurs oper = new Operateurs();
-                Coordonnees cord = new Coordonnees();
+            else
+            {
                 cord.Adresse = adresseTextBox.Text;
                 if (male.IsChecked == true)
                 {
@@ -43,7 +53,7 @@ namespace yazaki.UserInterfaces.UserControls
                 {
                     cord.Sexe = "F";
                 }
-                
+
                 cord.civilStatus = civilStatus.Text;
                 cord.dateOfBirth = dateOfBirth.SelectedDate;
                 cord.dateOfEmployment = dateOfEmployment.SelectedDate;
@@ -67,14 +77,34 @@ namespace yazaki.UserInterfaces.UserControls
                     {
                         unitOfWork.Save();
                         succesmessage.Text = "Opérateur ajouter avec succès";
+
+                        return oper;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         errormessage.Text = "Une érreur c'est produite impossible d'ajouter l'opérateur";
                         MessageBox.Show(ex.ToString());
                     }
                 }
             }
+            return null;
+        }
+
+        private void openTestTab(Operateurs op)
+        {
+            HomeWindow parentWindow = Window.GetWindow(this) as HomeWindow;
+            parentWindow.GridCursor.Margin = new Thickness(10 + (180 * 1), 0, 0, 0);
+
+            parentWindow.GridMain.Children.Clear();
+            parentWindow.GridMain.Children.Add(new UserControlTest(op,formateur));
+                    
+        }
+
+        private void addAndStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            Operateurs oper = ajouterOperateur();
+            if(oper != null)
+                openTestTab(oper);
         }
     }
 }

@@ -200,6 +200,9 @@
     </Compile>
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="UserInterfaces\TestCramping.xaml.cs">
+      <DependentUpon>TestCramping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterfaces\TestInsertion.xaml.cs">
       <DependentUpon>TestInsertion.xaml</DependentUpon>
     </Compile>
@@ -231,6 +234,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserInterfaces\TestCramping.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserInterfaces\TestInsertion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

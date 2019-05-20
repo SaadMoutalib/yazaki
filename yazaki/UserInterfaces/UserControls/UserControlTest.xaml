@@ -22,10 +22,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox ItemsSource="{Binding}" DisplayMemberPath="FullName" SelectedValuePath="Id" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Candidat" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="opCombo" IsEditable="True"/>
+                    <ComboBox ItemsSource="{Binding}" DisplayMemberPath="FullName" SelectedValuePath="Id" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Candidat"  FontFamily="Champagne &amp; Limousines" FontSize="12" Name="opCombo" IsEditable="True"/>
                     <ComboBox Grid.Row="1" Name="type" Margin="0,10" materialDesign:HintAssist.Hint="Type de test" IsEditable="True">
                         <ComboBoxItem>Insertion</ComboBoxItem>
-                        <ComboBoxItem>Crimping</ComboBoxItem>
+                        <ComboBoxItem>Cramping</ComboBoxItem>
                         <ComboBoxItem>Taping</ComboBoxItem>
                     </ComboBox>
                     <ComboBox Grid.Row="2" Name="niveau" Margin="0,10" materialDesign:HintAssist.Hint="Niveau" IsEditable="True">

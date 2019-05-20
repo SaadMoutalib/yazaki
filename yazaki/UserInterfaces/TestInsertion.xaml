@@ -50,6 +50,7 @@
 
                 </Grid>
             </StackPanel>
+            <Label Margin="0,100" Content="0/10" Name="lblResultat" FontSize="80" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
         </Grid>
     </DockPanel>
 </Window>
