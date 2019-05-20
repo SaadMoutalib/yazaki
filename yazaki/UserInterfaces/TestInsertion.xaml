@@ -8,15 +8,48 @@
         mc:Ignorable="d"
         Title="TestInsertion" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
     <DockPanel>
-        <Grid DockPanel.Dock="Top">
+        <Grid DockPanel.Dock="Top" Margin="20">
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <ProgressBar Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0"/>
-            <Image Height="500" Width="1200" Source="/yazaki;component/Assets/Layoutconnectors.PNG" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Name="lblTimer" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" />
-            <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Margin="0,0,134,0" Name="startButton" Click="startButton_Click"/>
+            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0"/>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                <Label Content="Candidat : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            </StackPanel>
+            <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Margin="0,0,134,0" Name="startButton" Click="startButton_Click"/>
+            <Button Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Margin="0,150,134,0" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="WhiteSmoke" >
+                <StackPanel.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" ShadowDepth="1" Color="#FF292929"/>
+                </StackPanel.Effect>
+                <Grid Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle Name="rect1" Grid.Row="0" Grid.Column="0" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect2" Grid.Row="0" Grid.Column="1" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect3" Grid.Row="0" Grid.Column="2" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect4" Grid.Row="0" Grid.Column="3" Fill="#FFF4F4F5"  Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect5" Grid.Row="0" Grid.Column="4" Fill="#FFF4F4F5"  Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+
+                    <Rectangle Name="rect6" Grid.Row="1" Grid.Column="0" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect7" Grid.Row="1" Grid.Column="1" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect8" Grid.Row="1" Grid.Column="2" Fill="#FFF4F4F5" Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect9" Grid.Row="1" Grid.Column="3" Fill="#FFF4F4F5"  Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+                    <Rectangle Name="rect10" Grid.Row="1" Grid.Column="4" Fill="#FFF4F4F5"  Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
+
+                </Grid>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

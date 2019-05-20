@@ -56,18 +56,6 @@
           <Property Name="id_op" Type="int" Nullable="false" />
           <Property Name="id_form" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Coordonnees_Formateurs">
-          <End Role="Formateurs" Type="Self.Formateurs" Multiplicity="1" />
-          <End Role="Coordonnees" Type="Self.Coordonnees" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Formateurs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Coordonnees">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Coordonnees_Operateurs">
           <End Role="Operateurs" Type="Self.Operateurs" Multiplicity="1" />
           <End Role="Coordonnees" Type="Self.Coordonnees" Multiplicity="0..1" />
@@ -109,10 +97,6 @@
           <EntitySet Name="Formateurs" EntityType="Self.Formateurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operateurs" EntityType="Self.Operateurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Coordonnees_Formateurs" Association="Self.FK_Coordonnees_Formateurs">
-            <End Role="Formateurs" EntitySet="Formateurs" />
-            <End Role="Coordonnees" EntitySet="Coordonnees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Coordonnees_Operateurs" Association="Self.FK_Coordonnees_Operateurs">
             <End Role="Operateurs" EntitySet="Operateurs" />
             <End Role="Coordonnees" EntitySet="Coordonnees" />
@@ -138,7 +122,6 @@
           <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Coordonnee" Relationship="yazakiModel.FK_Coordonnees_Formateurs" FromRole="Formateurs" ToRole="Coordonnees" />
           <NavigationProperty Name="Tests" Relationship="yazakiModel.FK_Test_Formateurs" FromRole="Formateurs" ToRole="Test" />
         </EntityType>
         <EntityType Name="Operateurs">
@@ -172,10 +155,6 @@
           <EntitySet Name="Operateurs" EntityType="Self.Operateurs" />
           <EntitySet Name="Test" EntityType="Self.Test" />
           <EntitySet Name="Coordonnees" EntityType="yazakiModel.Coordonnees" />
-          <AssociationSet Name="FK_Coordonnees_Formateurs" Association="yazakiModel.FK_Coordonnees_Formateurs">
-            <End Role="Formateurs" EntitySet="Formateurs" />
-            <End Role="Coordonnees" EntitySet="Coordonnees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Coordonnees_Operateurs" Association="yazakiModel.FK_Coordonnees_Operateurs">
             <End Role="Operateurs" EntitySet="Operateurs" />
             <End Role="Coordonnees" EntitySet="Coordonnees" />
@@ -199,7 +178,6 @@
           <Property Name="Sexe" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Formateur" Relationship="yazakiModel.FK_Coordonnees_Formateurs" FromRole="Coordonnees" ToRole="Formateurs" />
           <NavigationProperty Name="Operateur" Relationship="yazakiModel.FK_Coordonnees_Operateurs" FromRole="Coordonnees" ToRole="Operateurs" />
           <Property Name="postalCode" Type="Int32" />
           <Property Name="civilStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -211,18 +189,6 @@
           <Property Name="departementName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="dateOfStartingWorkInDep" Type="DateTime" Precision="0" />
         </EntityType>
-        <Association Name="FK_Coordonnees_Formateurs">
-          <End Type="yazakiModel.Formateurs" Role="Formateurs" Multiplicity="1" />
-          <End Type="yazakiModel.Coordonnees" Role="Coordonnees" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Formateurs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Coordonnees">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Coordonnees_Operateurs">
           <End Type="yazakiModel.Operateurs" Role="Operateurs" Multiplicity="1" />
           <End Type="yazakiModel.Coordonnees" Role="Coordonnees" Multiplicity="0..1" />

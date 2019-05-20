@@ -9,8 +9,33 @@
              Height="auto" Width="auto">
     <Grid>
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                <TextBlock Text="Page Test"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="White" Width="250" Height="270">
+                <StackPanel.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" ShadowDepth="1" Color="#FF292929"/>
+                </StackPanel.Effect>
+                <Label Content="Commencer un test" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                <Grid VerticalAlignment="Top" Margin="20,10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox ItemsSource="{Binding}" DisplayMemberPath="FullName" SelectedValuePath="Id" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Candidat" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="opCombo" IsEditable="True"/>
+                    <ComboBox Grid.Row="1" Name="type" Margin="0,10" materialDesign:HintAssist.Hint="Type de test" IsEditable="True">
+                        <ComboBoxItem>Insertion</ComboBoxItem>
+                        <ComboBoxItem>Crimping</ComboBoxItem>
+                        <ComboBoxItem>Taping</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Grid.Row="2" Name="niveau" Margin="0,10" materialDesign:HintAssist.Hint="Niveau" IsEditable="True">
+                        <ComboBoxItem>Debutant</ComboBoxItem>
+                        <ComboBoxItem>Intérmediare</ComboBoxItem>
+                        <ComboBoxItem>Avancé</ComboBoxItem>
+                    </ComboBox>
+                    <Button Grid.Row="3" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="COMMENCER" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="addButton" Click="startButton_Click"/>
+                    <TextBlock Grid.Row="4" Name ="errormessage" OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center"  />
+                </Grid>
             </StackPanel>
         </materialDesign:TransitioningContent>
     </Grid>

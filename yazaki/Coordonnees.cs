@@ -30,7 +30,6 @@ namespace yazaki
         public string departementName { get; set; }
         public Nullable<System.DateTime> dateOfStartingWorkInDep { get; set; }
     
-        public virtual Formateurs Formateur { get; set; }
         public virtual Operateurs Operateur { get; set; }
     }
 }

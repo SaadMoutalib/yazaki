@@ -22,17 +22,28 @@ namespace yazaki.UserInterfaces
     public partial class TestInsertion : Window
     {
         private SerialPort port;
-        public TestInsertion()
+        DispatcherTimer timer;
+        Operateurs operateur;
+        private int time = 3600;
+
+        public TestInsertion(String niveau,Operateurs op)
         {
             InitializeComponent();
-            port = new SerialPort();
+            operateur = op;
+            nomLbl.Content = op.FullName;
         }
-        private int time = 3600;
+
         void timer_Tick(object sender, EventArgs e)
         {
-            if(time>0)
+            if (time > 0) { 
                 time--;
-            lblTimer.Content = (TimeSpan.FromSeconds(time)).ToString();
+                pgBar.Value++;
+                startButton.Content = (TimeSpan.FromSeconds(time)).ToString();
+            }
+            else
+            {
+                timer.Stop();
+            }
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -40,26 +51,104 @@ namespace yazaki.UserInterfaces
             
             try
             {
+                port = new SerialPort();
                 port.BaudRate = 9600;
                 port.PortName = "COM8";
+
+                port.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
                 port.Open();
 
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromMilliseconds(1);
+                timer.Tick += timer_Tick;
+                timer.Start();
+
+                startButton.Background = Brushes.Red;
+                startButton.IsEnabled = false;
+                pgBar.Maximum = time;
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message");
             }
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
+            
         }
+
         private void DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string test = port.ReadLine();
-            MessageBox.Show(test);
+            test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
 
+            switch (test)
+            {
+                case "1":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "2":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "3":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "4":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "5":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    }); 
+                    break;
+                case "6":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "7":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "8":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "9":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+                case "10":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                    });
+                    break;
+            }
+
+        }
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

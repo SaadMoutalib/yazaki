@@ -24,7 +24,7 @@ namespace yazaki.UserInterfaces
             int index = int.Parse(((Button)e.Source).Uid);
 
             GridCursor.Margin = new Thickness(10 + (180 * index), 0, 0, 0);
-
+           
             switch (index)
             {
                 case 0:

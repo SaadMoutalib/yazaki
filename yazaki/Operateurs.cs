@@ -23,7 +23,14 @@ namespace yazaki
         public int Id { get; set; }
         public string nom { get; set; }
         public string prenom { get; set; }
-    
+        public string FullName
+        {
+            get
+            {
+                return nom + " " + prenom;
+            }
+        }
+
         public virtual Coordonnees Coordonnee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test> Tests { get; set; }
