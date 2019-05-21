@@ -17,7 +17,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                 <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Width="70" TextDecorations="{x:Null}" TextAlignment="Center" Text="Logged in as"/>
                 <TextBlock Margin="5" Name="userLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Width="auto" TextDecorations="{x:Null}" TextAlignment="Center"/>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="logOutButton_Click">
                     <materialDesign:PackIcon Kind="Logout" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>
             </StackPanel>
@@ -28,7 +28,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10 0" HorizontalAlignment="Left">
                 <Button Uid="0" Width="180" Content="Ajouter un candidat" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click" />
                 <Button Uid="1" Width="180" Content="Commencer un test" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
-                <Button Uid="2" Width="180" Content="Résultats" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="2" Width="180" Content="Candidats" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
                 <Button Uid="3" Width="180" Content="Ajouter un formateur" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
             </StackPanel>
             <Grid x:Name="GridCursor" Width="180" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>

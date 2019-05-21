@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="yazaki.UserInterfaces.UserControls.UserControlCandidats"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:yazaki"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="auto" Width="auto">
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="White">
+                <Label Content="Liste des candidats" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18" Margin="0 20 0 0"/>
+                <Label Name="tstlbl" />
+                <DataGrid Name="dataGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                    <DataGrid.Columns>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Id}" Header="Id" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding nom}" Header="Nom" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding prenom}" Header="Prenom" MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Adresse}" Header="Adresse" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Sexe}" Header="Sexe" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Ville}" Header="Ville" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Tel}" Header="Tel" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Email}" Header="Email" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.postalCode}" Header="Code Postal" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.dateOfBirth}" Header="Annee de naissance" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </materialDesign:TransitioningContent>
+       
+    </Grid>
+</UserControl>

@@ -200,6 +200,9 @@
     </Compile>
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="UserInterfaces\TestCramping.xaml.cs">
+      <DependentUpon>TestCramping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterfaces\TestInsertion.xaml.cs">
       <DependentUpon>TestInsertion.xaml</DependentUpon>
     </Compile>
@@ -209,8 +212,8 @@
     <Compile Include="UserInterfaces\UserControls\UserControlAjouterF.xaml.cs">
       <DependentUpon>UserControlAjouterF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaces\UserControls\UserControlresultats.xaml.cs">
-      <DependentUpon>UserControlresultats.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\UserControls\UserControlCandidats.xaml.cs">
+      <DependentUpon>UserControlCandidats.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\UserControls\UserControlTest.xaml.cs">
       <DependentUpon>UserControlTest.xaml</DependentUpon>
@@ -231,6 +234,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserInterfaces\TestCramping.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserInterfaces\TestInsertion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,7 +250,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterfaces\UserControls\UserControlresultats.xaml">
+    <Page Include="UserInterfaces\UserControls\UserControlCandidats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
