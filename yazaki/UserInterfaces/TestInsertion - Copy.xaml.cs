@@ -38,9 +38,8 @@ namespace yazaki.UserInterfaces
             formateur = form;
             operateur = op;
             nomLbl.Content = op.FullName;
-            IDLbl.Content = op.Id;
 
-            if (niveau == "Debutant")
+            if(niveau == "Debutant")
             {
                 time = 3600;
             }else if(niveau == "Intérmediare")
@@ -74,7 +73,7 @@ namespace yazaki.UserInterfaces
             {
                 port = new SerialPort();
                 port.BaudRate = 9600;
-                port.PortName = Options.PORT;
+                port.PortName = "COM8";
 
                 port.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
                 port.Open();
@@ -224,7 +223,6 @@ namespace yazaki.UserInterfaces
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            port.Close();
         }
     }
 }

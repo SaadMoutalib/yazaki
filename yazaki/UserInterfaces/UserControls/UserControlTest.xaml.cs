@@ -24,10 +24,10 @@ namespace yazaki.UserInterfaces.UserControls
             formateur = form;
         }
 
-        public UserControlTest(Formateurs form)
+        public UserControlTest(Formateurs form )
         {
-            formateur = form;
             InitializeComponent();
+            formateur = form;
             bindComboBox();
         }
 
@@ -52,9 +52,13 @@ namespace yazaki.UserInterfaces.UserControls
                 if (type.Text == "Insertion")
                 {
                     new TestInsertion(niveau.Text, operateur,formateur).Show();
-                }else if(type.Text == "Cramping")
+                }else if(type.Text == "Crimping")
                 {
-                    new TestCramping(niveau.Text, operateur, formateur).Show();
+                    new TestCrimping(niveau.Text, operateur, formateur).Show();
+                }
+                else if (type.Text == "Taping")
+                {
+                    new TestTaping(niveau.Text, operateur, formateur).Show();
                 }
             }
             

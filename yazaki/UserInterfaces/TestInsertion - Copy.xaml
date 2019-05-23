@@ -13,13 +13,12 @@
         </Grid>
         <Grid DockPanel.Dock="Bottom">
             <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0"/>
-            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <Label Content="Candidat : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
-                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="214" />
-                <Label Content="ID  : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Width="57" />
-                <Label Name="IDLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="270" />
+                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             </StackPanel>
-            
+            <Button Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Margin="0,0,134,0" Name="startButton" Click="startButton_Click"/>
+            <Button Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Margin="0,150,134,0" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="WhiteSmoke" >
                 <StackPanel.Effect>
                     <DropShadowEffect BlurRadius="15" Direction="0" ShadowDepth="1" Color="#FF292929"/>
@@ -50,10 +49,6 @@
                     <Rectangle Name="rect10" Grid.Row="1" Grid.Column="4" Fill="#FFF4F4F5"  Height="114" Stroke="Black" VerticalAlignment="Center" Margin="25" Width="174"/>
 
                 </Grid>
-            </StackPanel>
-            <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
-                <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <Label Margin="0,100" Content="0/10" Name="lblResultat" FontSize="80" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
         </Grid>

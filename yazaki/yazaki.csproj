@@ -170,6 +170,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="Data\Options.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Formateurs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -200,20 +201,26 @@
     </Compile>
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\Repository.cs" />
-    <Compile Include="UserInterfaces\TestCramping.xaml.cs">
-      <DependentUpon>TestCramping.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\OptionsWindow.xaml.cs">
+      <DependentUpon>OptionsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\TestCrimping.xaml.cs">
+      <DependentUpon>TestCrimping.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\TestInsertion.xaml.cs">
       <DependentUpon>TestInsertion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaces\UserControls\UserControlAjouterC.xaml.cs">
-      <DependentUpon>UserControlAjouterC.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\TestTaping.xaml.cs">
+      <DependentUpon>TestTaping.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaces\UserControls\UserControlAjouterF.xaml.cs">
-      <DependentUpon>UserControlAjouterF.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\UserControls\UserControlAjouterOperateur.xaml.cs">
+      <DependentUpon>UserControlAjouterOperateur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaces\UserControls\UserControlCandidats.xaml.cs">
-      <DependentUpon>UserControlCandidats.xaml</DependentUpon>
+    <Compile Include="UserInterfaces\UserControls\UserControlAjouterFormateur.xaml.cs">
+      <DependentUpon>UserControlAjouterFormateur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\UserControls\UserControlListOperateurs.xaml.cs">
+      <DependentUpon>UserControlListOperateurs.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\UserControls\UserControlTest.xaml.cs">
       <DependentUpon>UserControlTest.xaml</DependentUpon>
@@ -234,7 +241,11 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserInterfaces\TestCramping.xaml">
+    <Page Include="UserInterfaces\OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\TestCrimping.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -242,15 +253,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterfaces\UserControls\UserControlAjouterC.xaml">
+    <Page Include="UserInterfaces\TestTaping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterfaces\UserControls\UserControlAjouterF.xaml">
+    <Page Include="UserInterfaces\UserControls\UserControlAjouterOperateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserInterfaces\UserControls\UserControlCandidats.xaml">
+    <Page Include="UserInterfaces\UserControls\UserControlAjouterFormateur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\UserControls\UserControlListOperateurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,9 +7,9 @@ namespace yazaki.UserInterfaces.UserControls
     /// <summary>
     /// Logique d'interaction pour UserControlresultats.xaml
     /// </summary>
-    public partial class UserControlCandidats : UserControl
+    public partial class UserControlListOperateurs : UserControl
     {
-        public UserControlCandidats()
+        public UserControlListOperateurs()
         {
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))

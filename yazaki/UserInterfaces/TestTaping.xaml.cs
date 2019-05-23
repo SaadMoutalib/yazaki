@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +12,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO.Ports;
 using System.Windows.Threading;
 using yazaki.Data;
 
 namespace yazaki.UserInterfaces
 {
     /// <summary>
-    /// Logique d'interaction pour TestInsertion.xaml
+    /// Interaction logic for TestTaping.xaml
     /// </summary>
-    public partial class TestInsertion : Window
+    public partial class TestTaping : Window
     {
+
         private SerialPort port;
         private DispatcherTimer timer;
         private Operateurs operateur;
@@ -31,7 +32,7 @@ namespace yazaki.UserInterfaces
         private int Score = 0;
         private int time;
 
-        public TestInsertion(String _niveau,Operateurs op,Formateurs form)
+        public TestTaping(String _niveau, Operateurs op, Formateurs form)
         {
             InitializeComponent();
             niveau = _niveau;
@@ -43,18 +44,21 @@ namespace yazaki.UserInterfaces
             if (niveau == "Debutant")
             {
                 time = 3600;
-            }else if(niveau == "Intérmediare")
+            }
+            else if (niveau == "Intérmediare")
             {
                 time = 2400;
             }
-            else{
+            else
+            {
                 time = 1800;
             }
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if (time > 0) { 
+            if (time > 0)
+            {
                 time--;
                 pgBar.Value++;
                 startButton.Content = (TimeSpan.FromSeconds(time)).ToString();
@@ -69,7 +73,7 @@ namespace yazaki.UserInterfaces
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
                 port = new SerialPort();
@@ -93,7 +97,7 @@ namespace yazaki.UserInterfaces
             {
                 MessageBox.Show(ex.Message, "Message");
             }
-            
+
         }
 
         private void DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -101,90 +105,15 @@ namespace yazaki.UserInterfaces
             string test = port.ReadLine();
             test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
 
-            switch (test)
+            if(test == "IN")
             {
-                case "1":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "2":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "3":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "4":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "5":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    }); 
-                    break;
-                case "6":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "7":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "8":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "9":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "10":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
+                Score++;
             }
 
             this.Dispatcher.Invoke(() =>
             {
-                lblResultat.Content = Score + "/10";
+                lblResultat.Content = Score;
             });
-
-            if (Score == 10)
-            {
-                port.Close();
-                timer.Stop();
-            }
 
         }
 
@@ -226,5 +155,6 @@ namespace yazaki.UserInterfaces
             this.Close();
             port.Close();
         }
+
     }
 }
