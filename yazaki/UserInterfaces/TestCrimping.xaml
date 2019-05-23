@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
-        Title="TestInsertion" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
+        Title="TestInsertion" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png">
     <DockPanel>
         <Grid DockPanel.Dock="Top" Margin="20">
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
@@ -14,16 +14,33 @@
         <Grid DockPanel.Dock="Bottom">
             <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2"/>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Label Content="Candidat : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
-                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="214" />
-                <Label Content="ID  : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Width="57" />
-                <Label Name="IDLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="270" />
+                <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="nomLbl"  Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38"/>
+                <Label Content="ID  : "  Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label Name="IDLbl"  Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
-            <Label Content="0/10" Name="resultat" FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+            <StackPanel  Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Name="img1" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img2" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img3" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img4" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img5"  Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                </StackPanel>
+                <StackPanel Name="stackPanel" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Name="img6" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img7" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img8" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img9" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                    <Image Name="img10" Margin="10" Source="/yazaki;component/Assets/led-amber-md.png" Height="150"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Margin="0 0 0 100" Content="0/10" Name="resultat" FontSize="100" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
         </Grid>
     </DockPanel>
 </Window>

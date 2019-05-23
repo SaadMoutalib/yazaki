@@ -331,6 +331,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Layoutconnectors.PNG" />
+    <Resource Include="Assets\green-led-md.png" />
+    <Resource Include="Assets\led-amber-md.png" />
+    <Resource Include="Assets\red-led-md.png" />
+    <Resource Include="Assets\330011.jpg" />
+    <Resource Include="Assets\COG-icon.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

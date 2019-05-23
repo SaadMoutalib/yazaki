@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
-        Title="TestTaping"  Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
+        Title="TestTaping"  Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png">
     <DockPanel>
         <Grid DockPanel.Dock="Top" Margin="20">
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
@@ -29,10 +29,10 @@
             </ProgressBar>
 
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Label Content="Candidat : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
-                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="214" />
-                <Label Content="ID  : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Width="57" />
-                <Label Name="IDLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="270" />
+                <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="nomLbl" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
+                <Label Content="ID  : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label Name="IDLbl" Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>

@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
-        Title="Options" WindowStartupLocation="CenterScreen" Height="200" Width="400">
+        Title="Options" WindowStartupLocation="CenterScreen" Height="200" Width="300" Icon="../Assets/COG-icon.png">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

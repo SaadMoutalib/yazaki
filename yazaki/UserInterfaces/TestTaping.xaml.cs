@@ -153,7 +153,8 @@ namespace yazaki.UserInterfaces
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            port.Close();
+            if (port != null)
+                port.Close();
         }
 
     }

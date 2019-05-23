@@ -32,6 +32,9 @@ namespace yazaki.UserInterfaces
         private int Score = 0;
         private int tries = 0;
 
+        private string green = "/yazaki;component/Assets/green-led-md.png";
+        private string red = "/yazaki;component/Assets/red-led-md.png";
+
         public TestCrimping(String _niveau,Operateurs op,Formateurs form )
         {
             InitializeComponent();
@@ -103,13 +106,30 @@ namespace yazaki.UserInterfaces
         {
             string test = port.ReadLine();
             test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
+           
             tries++;
+            Image image=null;
+            this.Dispatcher.Invoke(() =>
+            {
+                image = stackPanel.FindName("img" + tries) as Image;
+            });
+
+            
+
             if (test == "OKAY")
             {
                 Score++;
                 this.Dispatcher.Invoke(() =>
                 {
+                    image.Source = new BitmapImage(new Uri(green, UriKind.Relative));
                     resultat.Content = Score + "/10";
+                });
+            }
+            else if (test == "NOT OKAY")
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    image.Source = new BitmapImage(new Uri(red, UriKind.Relative));
                 });
             }
 
@@ -160,7 +180,8 @@ namespace yazaki.UserInterfaces
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            port.Close();
+            if (port != null)
+                port.Close();
         }
     }
 }

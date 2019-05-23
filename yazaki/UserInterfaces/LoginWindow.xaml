@@ -6,38 +6,35 @@
         xmlns:local="clr-namespace:yazaki"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Login" Height="500" Width="360" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Icon="../Assets/KSuxeMws_400x400.png">
+        Title="Login" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png" Background="White">
     <Grid>
-        <Rectangle Height="280" VerticalAlignment="Top">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White" Offset="0.301"/>
-                    <GradientStop Color="#FFEE2424" Offset="1"/>
-                    <GradientStop Color="#FFE45E5E" Offset="0.606"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <Rectangle Width="320" Height="240" VerticalAlignment="Bottom" RadiusY="10" RadiusX="10" Fill="White" Margin="0,0,0,100">
+        <Image Source="../Assets/330011.jpg" Stretch="Fill"/>
+        <Grid VerticalAlignment="Top">
+            <Image Margin="0 150 0 0" Source="../Assets/Yazaki_company_logo.png" Height="100" VerticalAlignment="Center" Stretch="Fill" HorizontalAlignment="Center" Width="600"/>
+            <Button x:Name="exitButton" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" Click="exitButton_Click">
+                <materialDesign:PackIcon Kind="Clear" Foreground="Black" Width="25" Height="25" />
+            </Button>
+        </Grid>
+        <Rectangle Width="320" Height="240" VerticalAlignment="Center" RadiusY="10" RadiusX="10" Fill="White" Margin="0,0,0,30" HorizontalAlignment="Center">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid VerticalAlignment="Bottom" Margin="45,80" Height="240">
+        <Grid VerticalAlignment="Center" Width="280" Height="240" HorizontalAlignment="Center">
             <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
-            <StackPanel VerticalAlignment="Center" Margin="15">
-                <TextBox Margin="0,10" materialDesign:HintAssist.Hint="ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" SelectionBrush="#FFEB4242" CaretBrush="#FFEB4242"/>
-                <PasswordBox Margin="0,10" materialDesign:HintAssist.Hint="MOT DE PASSE" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="passwordBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Account" Foreground="Black" VerticalAlignment="Center" />
+                    <TextBox Width="250" Margin="5 0 0 5" materialDesign:HintAssist.Hint="IDENTIFIANT" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" SelectionBrush="#FFEB4242" CaretBrush="#FFEB4242"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Key" Foreground="Black" VerticalAlignment="Center" />
+                    <PasswordBox  Width="250" Margin="5 0 0 5" materialDesign:HintAssist.Hint="MOT DE PASSE" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="passwordBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                </StackPanel>
             </StackPanel>
+            <Button IsDefault="True" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="LOGIN" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="loginButton" Click="loginButton_Click"/>
         </Grid>
-        <Button IsDefault="True" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100,0,100,85" Content="LOGIN" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="loginButton" Click="loginButton_Click"/>
-        <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Bottom" Width="auto" Margin="0,0,0,25"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
-        <Grid Height="100" VerticalAlignment="Top">
-            <Image Source="../Assets/Yazaki_company_logo.png" Height="50" VerticalAlignment="Bottom" Stretch="Fill" HorizontalAlignment="Center" Width="270"/>
-            <Button x:Name="exitButton" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" RenderTransformOrigin="-0.305,0.467" Click="exitButton_Click">
-                <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
-            </Button>
-        </Grid>
+        <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Center" Width="auto" Margin="0,300,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
 
     </Grid>
 </Window>

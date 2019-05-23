@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
-        Title="TestInsertion" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
+        Title="TestInsertion" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png">
     <DockPanel>
         <Grid DockPanel.Dock="Top" Margin="20">
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
@@ -14,10 +14,10 @@
         <Grid DockPanel.Dock="Bottom">
             <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0"/>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" >
-                <Label Content="Candidat : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
-                <Label Name="nomLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="214" />
-                <Label Content="ID  : " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Width="57" />
-                <Label Name="IDLbl" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" Width="270" />
+                <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="nomLbl" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
+                <Label Content="ID  : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="IDLbl" Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
             </StackPanel>
             
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="WhiteSmoke" >
