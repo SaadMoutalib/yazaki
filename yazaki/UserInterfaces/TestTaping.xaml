@@ -11,21 +11,27 @@
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2">
+            <Label Content="0% " Margin="450,160,1420,0" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" />
+            <Label Content="25% " Margin="700,160,1130,0" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" />
+            <Label Content="50% " Margin="950,160,898,0" FontSize="20" FontWeight="Bold" Width="65" VerticalAlignment="Top" />
+            <Label Content="75% " Margin="1200,160,673,0" FontSize="20" FontWeight="Bold" Width="56" VerticalAlignment="Top" />
+            <Label Content="100% " Margin="1450,160,398,0" FontSize="20" FontWeight="Bold" Width="70" VerticalAlignment="Top" />
+            
+            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2" Background="#FF90CAF9" RenderTransformOrigin="0.5,0.5">
+
                 <ProgressBar.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                <RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
-                                <TranslateTransform X="0.5" Y="0.5"/>
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="Lime" Offset="0"/>
-                        <GradientStop Color="Red" Offset="1"/>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#FF014D01" Offset="0"/>
+                        <GradientStop Color="#FF014D01" Offset="0.20"/>
+                        <GradientStop Color="#FF009100" Offset="0.25"/>
+                        <GradientStop Color="#FF009100" Offset="0.45"/>
+                        <GradientStop Color="#FFFFC500" Offset="0.5"/>
+                        <GradientStop Color="#FFFFC500" Offset="0.7"/>
+                        <GradientStop Color="#FFF32C2C" Offset="0.75"/>
+                        <GradientStop Color="#FFF32C2C" Offset="1"/>
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
+
             </ProgressBar>
 
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -39,6 +45,7 @@
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <Label Content="0" Name="lblResultat" FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+            <Label Content="RPM " FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,424,558,424" />
         </Grid>
     </DockPanel>
 </Window>

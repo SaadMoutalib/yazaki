@@ -28,6 +28,7 @@ namespace yazaki.UserInterfaces
         private Operateurs operateur;
         private Formateurs formateur;
         private String niveau;
+        private LinearGradientBrush brush;
 
         private int Score = 0;
         private int time;
@@ -40,6 +41,7 @@ namespace yazaki.UserInterfaces
             operateur = op;
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
+            brush = pgBar.Foreground as LinearGradientBrush;
 
             if (niveau == "Debutant")
             {
@@ -69,6 +71,17 @@ namespace yazaki.UserInterfaces
                 port.Close();
                 addResult();
             }
+
+            LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
+            myLinearGradientBrush.StartPoint = brush.StartPoint;
+            myLinearGradientBrush.EndPoint = brush.EndPoint;
+            double progress = pgBar.Value / (pgBar.Maximum - pgBar.Minimum);
+            foreach (GradientStop stop in brush.GradientStops)
+            {
+                myLinearGradientBrush.GradientStops.Add(new GradientStop(stop.Color, (stop.Offset * (1.0d / progress))));
+            }
+
+            pgBar.Foreground = myLinearGradientBrush;
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -152,9 +165,13 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
+            //port.Write("#STOP\n");
             this.Close();
             if (port != null)
-                port.Close();
+             port.Close(); 
+            
+
+
         }
 
     }

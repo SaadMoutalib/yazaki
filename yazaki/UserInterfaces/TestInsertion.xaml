@@ -12,7 +12,27 @@
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,195,0,0"/>
+            <Label Content="0% " Margin="450,160,1420,0" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" />
+            <Label Content="25% " Margin="700,160,1130,0" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" />
+            <Label Content="50% " Margin="950,160,898,0" FontSize="20" FontWeight="Bold" Width="65" VerticalAlignment="Top" />
+            <Label Content="75% " Margin="1200,160,673,0" FontSize="20" FontWeight="Bold" Width="56" VerticalAlignment="Top" />
+            <Label Content="100% " Margin="1450,160,398,0" FontSize="20" FontWeight="Bold" Width="70" VerticalAlignment="Top" />
+            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2" Background="#FF90CAF9" RenderTransformOrigin="0.5,0.5">
+
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="#FF014D01" Offset="0"/>
+                        <GradientStop Color="#FF014D01" Offset="0.20"/>
+                        <GradientStop Color="#FF009100" Offset="0.25"/>
+                        <GradientStop Color="#FF009100" Offset="0.45"/>
+                        <GradientStop Color="#FFFFC500" Offset="0.5"/>
+                        <GradientStop Color="#FFFFC500" Offset="0.7"/>
+                        <GradientStop Color="#FFF32C2C" Offset="0.75"/>
+                        <GradientStop Color="#FFF32C2C" Offset="1"/>
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
+
+            </ProgressBar>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" >
                 <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
                 <Label Name="nomLbl" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />

@@ -16,7 +16,8 @@ namespace yazaki.UserInterfaces.UserControls
             {
                 List<Operateurs> ops = unitOfWork.Operateurs.GetAll() as List<Operateurs>;
                 List<Coordonnees> coord = new List<Coordonnees>();
-                foreach(Operateurs op in ops)
+
+                foreach (Operateurs op in ops)
                 {
                     coord.Add(op.Coordonnee);
                 }
