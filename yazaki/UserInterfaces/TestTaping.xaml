@@ -44,8 +44,11 @@
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
-            <Label Content="0" Name="lblResultat" FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
-            <Label Content="RPM " FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,424,558,424" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="0" Name="lblResultat"  FontSize="100" FontWeight="Bold" Margin="0 0 50 0"/>
+                <Label Content="RPM " FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            </StackPanel>
+           
         </Grid>
     </DockPanel>
 </Window>
