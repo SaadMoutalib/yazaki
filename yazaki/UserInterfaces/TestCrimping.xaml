@@ -12,7 +12,17 @@
             <Image Source="/yazaki;component/Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2"/>
+            <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2" Background="#FF90CAF9" RenderTransformOrigin="0.5,0.5">
+               
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="Green" Offset="0"/>
+                        <GradientStop Color="Orange" Offset="0.5"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
+
+            </ProgressBar>
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
                 <Label Name="nomLbl"  Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38"/>

@@ -105,7 +105,7 @@ namespace yazaki.UserInterfaces
             string test = port.ReadLine();
             test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
 
-            if(test == "IN")
+            if(test == "OUT")
             {
                 Score++;
             }
@@ -121,12 +121,12 @@ namespace yazaki.UserInterfaces
         {
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Insertion";
+            test.type = "Taping";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.nom_test = "Insertion";
+            test.nom_test = "Taping";
             test.resultat = Score;
-            if (Score > 5)
+            if (Score > 120)
             {
                 test.passed = true;
             }

@@ -72,9 +72,9 @@ namespace yazaki.UserInterfaces.UserControls
                 oper.Coordonnee = cord;
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
                 {
-                    unitOfWork.Operateurs.Add(oper);
                     try
                     {
+                        unitOfWork.Operateurs.Add(oper);
                         unitOfWork.Save();
                         succesmessage.Text = "Opérateur ajouter avec succès";
 
