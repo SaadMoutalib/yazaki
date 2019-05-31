@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -25,16 +26,21 @@ namespace yazaki.UserInterfaces
 
         private SerialPort port;
         private DispatcherTimer timer;
+        private DispatcherTimer timer2;
         private Operateurs operateur;
         private Formateurs formateur;
         private String niveau;
         private LinearGradientBrush brush;
-
+        private bool Start = false;
         private int Score = 0;
         private int time;
+        private double time2;
+        private double Vitesse;
 
         public TestTaping(String _niveau, Operateurs op, Formateurs form)
         {
+            
+
             InitializeComponent();
             niveau = _niveau;
             formateur = form;
@@ -42,6 +48,20 @@ namespace yazaki.UserInterfaces
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
             brush = pgBar.Foreground as LinearGradientBrush;
+
+            try
+            {
+                port = new SerialPort();
+                port.BaudRate = 9600;
+                port.PortName = Options.PORT;
+
+                port.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
+                port.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message");
+            }
 
             if (niveau == "Debutant")
             {
@@ -67,6 +87,7 @@ namespace yazaki.UserInterfaces
             }
             else
             {
+                Start = false;
                 timer.Stop();
                 port.Close();
                 addResult();
@@ -86,43 +107,58 @@ namespace yazaki.UserInterfaces
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
+            StartMethod();
+        }
 
-            try
-            {
-                port = new SerialPort();
-                port.BaudRate = 9600;
-                port.PortName = Options.PORT;
+        public void StartMethod()
+        {
+            
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
 
-                port.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
-                port.Open();
+            timer2 = new DispatcherTimer();
+            timer2.Interval = TimeSpan.FromMilliseconds(1);
+            timer2.Tick += timer2_Tick;
+            timer2.Start();
 
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(1);
-                timer.Tick += timer_Tick;
-                timer.Start();
 
-                startButton.Background = Brushes.Red;
-                startButton.IsEnabled = false;
-                pgBar.Maximum = time;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message");
-            }
+            startButton.Background = Brushes.Red;
+            startButton.IsEnabled = false;
+            pgBar.Maximum = time;
 
         }
 
-        private void DataReceived(object sender, SerialDataReceivedEventArgs e)
+        void timer2_Tick(object sender, EventArgs e)
+        {
+            time2++;
+        }
+
+
+        void DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string test = port.ReadLine();
             test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
-
+            if (Start == false )
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    startButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                });
+                Start = true;
+            }
             if(test == "OUT")
             {
                 Score++;
+                Vitesse = 1 / (time2/6000) ;
+                time2 = 0;
             }
 
+            this.Dispatcher.Invoke(() =>
+            {
+                lblVitesse.Content = Convert.ToInt32(Vitesse);
+            });
             this.Dispatcher.Invoke(() =>
             {
                 lblResultat.Content = Score;
@@ -165,13 +201,12 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            //port.Write("#STOP\n");
+            //port.Write("STOP");
             this.Close();
+            Start = false; 
             if (port != null)
              port.Close(); 
             
-
-
         }
 
     }

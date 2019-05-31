@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
         Title="TestTaping"  Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png">
@@ -45,10 +46,21 @@
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label Content="0" Name="lblResultat"  FontSize="100" FontWeight="Bold" Margin="0 0 50 0"/>
-                <Label Content="RPM " FontSize="100" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Score" FontWeight="Bold"/>
+                    <Label Content="0" Name="lblResultat"  FontSize="100" FontWeight="Bold" Margin="0 0 100 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Speed" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="0" Name="lblVitesse"  FontSize="100" FontWeight="Bold"/>
+                        <Label Content="Tour/min " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+                
+                
             </StackPanel>
-           
+
         </Grid>
     </DockPanel>
 </Window>

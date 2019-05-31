@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Data\Options.cs" />
+    <Compile Include="Data\Produit.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Formateurs.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -209,6 +210,9 @@
     </Compile>
     <Compile Include="UserInterfaces\TestInsertion.xaml.cs">
       <DependentUpon>TestInsertion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\TestMesure.xaml.cs">
+      <DependentUpon>TestMesure.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\TestTaping.xaml.cs">
       <DependentUpon>TestTaping.xaml</DependentUpon>
@@ -252,6 +256,10 @@
     <Page Include="UserInterfaces\TestInsertion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\TestMesure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserInterfaces\TestTaping.xaml">
       <SubType>Designer</SubType>

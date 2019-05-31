@@ -42,6 +42,7 @@ namespace yazaki.UserInterfaces
             IDLbl.Content = op.Id;
             brush = pgBar.Foreground as LinearGradientBrush;
 
+
             if (niveau == "Debutant")
             {
                 time = 3600;
