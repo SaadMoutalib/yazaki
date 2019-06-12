@@ -34,8 +34,8 @@ namespace yazaki.UserInterfaces
         private bool Start = false;
         private int Score = 0;
         private int time;
-        private double time2;
-        private double Vitesse;
+        //private double time2;
+        //private double Vitesse;
 
         public TestTaping(String _niveau, Operateurs op, Formateurs form)
         {
@@ -88,6 +88,7 @@ namespace yazaki.UserInterfaces
             else
             {
                 Start = false;
+                
                 timer.Stop();
                 port.Close();
                 addResult();
@@ -118,10 +119,10 @@ namespace yazaki.UserInterfaces
             timer.Tick += timer_Tick;
             timer.Start();
 
-            timer2 = new DispatcherTimer();
+            /*timer2 = new DispatcherTimer();
             timer2.Interval = TimeSpan.FromMilliseconds(1);
             timer2.Tick += timer2_Tick;
-            timer2.Start();
+            timer2.Start();*/
 
 
             startButton.Background = Brushes.Red;
@@ -130,10 +131,10 @@ namespace yazaki.UserInterfaces
 
         }
 
-        void timer2_Tick(object sender, EventArgs e)
+        /*void timer2_Tick(object sender, EventArgs e)
         {
             time2++;
-        }
+        }*/
 
 
         void DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -151,18 +152,15 @@ namespace yazaki.UserInterfaces
             if(test == "OUT")
             {
                 Score++;
-                Vitesse = 1 / (time2/6000) ;
-                time2 = 0;
+                //Vitesse = 1 / (time2/6000) ;
+                //time2 = 0;
             }
 
             this.Dispatcher.Invoke(() =>
             {
-                lblVitesse.Content = Convert.ToInt32(Vitesse);
+                lblVitesse.Content = Score;
             });
-            this.Dispatcher.Invoke(() =>
-            {
-                lblResultat.Content = Score;
-            });
+
 
         }
 

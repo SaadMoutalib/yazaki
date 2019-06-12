@@ -28,6 +28,7 @@ namespace yazaki.UserInterfaces
         private Formateurs formateur;
         private String niveau;
         private LinearGradientBrush brush;
+       
 
         private int Score = 0;
         private int time;
@@ -124,7 +125,7 @@ namespace yazaki.UserInterfaces
                         Score++;
                     });
                     break;
-                case "2":
+                case "2" :
                     this.Dispatcher.Invoke(() =>
                     {
                         rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);

@@ -27,6 +27,7 @@ namespace yazaki.UserInterfaces
         private Operateurs operateur;
         private Formateurs formateur;
         private int Score = 0;
+        private string affichage= "";
         private List<Produit> produits;
 
         public TestMesure(Operateurs op, Formateurs form)
@@ -38,19 +39,12 @@ namespace yazaki.UserInterfaces
             IDLbl.Content = op.Id;
 
             produits = new List<Produit>();
-            Produit p1 = new Produit(1, 1, 0.5, 0.7, 0.3);
-            Produit p2 = new Produit(2, 0.8, 0.6, 0.8, 0.4);
-            Produit p3 = new Produit(3, 0.9, 0.3, 0.6, 0.2);
-            Produit p4 = new Produit(4, 0.7, 0.4, 0.9, 0.5);
-            Produit p5 = new Produit(5, 0.6, 0.5, 1, 0.4);
+            Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
+            Produit p2 = new Produit("7116-4285-(02) SB", "1308 F025", "0.35", 1.85, 0.9, 1.1, 0.9);
+
             produits.Add(p1);
             produits.Add(p2);
-            produits.Add(p3);
-            produits.Add(p4);
-            produits.Add(p5);
-
-            atoTextBox.IsReadOnly = true;
-            maiTextBox.IsReadOnly = true;
+            DataContext = produits;
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -60,11 +54,21 @@ namespace yazaki.UserInterfaces
 
         private void StartMethod()
         {
-            if (refTextBox.Text == "")
+            errormessage.Text = "";
+            if (refCombo.Text == "")
             {
-                refTextBox.Focus();
-
-                errormessage.Text = "Entrez une réference";
+                refCombo.Focus();
+                errormessage.Text = "Entrez Reference Terminal";
+            }
+            else if(codeCombo.Text == "")
+            {
+                codeCombo.Focus();
+                errormessage.Text = "Entrez Code inventaire d'applicateur";
+            }
+            else if (secCombo.Text == "")
+            {
+                secCombo.Focus();
+                errormessage.Text = "Entrez Section de fil";
             }
             else if (atoTextBox.Text == "")
             {
@@ -76,11 +80,10 @@ namespace yazaki.UserInterfaces
             }
             else
             {
-                double mai = Convert.ToDouble(maiTextBox.Text);
-                double ato = Convert.ToDouble(atoTextBox.Text);
-                int reference = Convert.ToInt32(refTextBox.Text);
+                double mai = Convert.ToDouble(maiTextBox.Text.Replace('.',','));
+                double ato = Convert.ToDouble(atoTextBox.Text.Replace('.', ','));
+                Produit prod = refCombo.SelectedItem as Produit;
 
-                Produit prod = GetProduit(reference);
                 if(prod == null)
                 {
                     errormessage.Text = "Réference introuvable";
@@ -91,25 +94,33 @@ namespace yazaki.UserInterfaces
                     {
                         if (ato <= prod.max_ato && ato > prod.min_ato)
                         {
+                            affichage = "Valide";
                             Score++;
                         }
+                        else
+                        {
+                            affichage = "Non Valide";
+                        }
                     }
-                    resultat.Content = Score + "/5";
-                    if (Score == 5)
-                        addResult();
+                    else
+                    {
+                        affichage = "Non Valide";
+                    }
+                    resultat.Content = affichage;
+                    addResult();
                 }
                
             }
             
         }
 
-        private Produit GetProduit(int reference)
+        private Produit GetProduit(string reference_Terminal)
         {
             Produit produit = new Produit();
             
             foreach(Produit prod in produits)
             {
-                if (prod.reference == reference)
+                if (prod.reference_Terminal == reference_Terminal)
                 {
                     produit = prod;
                     return produit;
@@ -127,7 +138,7 @@ namespace yazaki.UserInterfaces
             test.id_op = operateur.Id;
             test.nom_test = "Mesure";
             test.resultat = Score;
-            if (Score > 2)
+            if (affichage == "Valide" )
             {
                 test.passed = true;
             }
@@ -135,6 +146,7 @@ namespace yazaki.UserInterfaces
             {
                 test.passed = false;
             }
+            test.niveau = "Debutant";
 
             using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
             {
@@ -153,12 +165,6 @@ namespace yazaki.UserInterfaces
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void IntValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)

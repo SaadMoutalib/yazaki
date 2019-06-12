@@ -34,6 +34,7 @@
                         <ComboBoxItem>Intérmediare</ComboBoxItem>
                         <ComboBoxItem>Avancé</ComboBoxItem>
                     </ComboBox>
+                    
                     <Button Margin="10" Grid.Row="3" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="COMMENCER" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="addButton" Click="startButton_Click"/>
                     <TextBlock  Height="20" Grid.Row="4" Name ="errormessage" OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Center"  />
                 </Grid>

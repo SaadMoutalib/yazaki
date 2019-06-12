@@ -47,14 +47,10 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical">
-                    <Label Content="Score" FontWeight="Bold"/>
-                    <Label Content="0" Name="lblResultat"  FontSize="100" FontWeight="Bold" Margin="0 0 100 0"/>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label Content="Speed" FontWeight="Bold"/>
+                    <Label Content="Tour" FontWeight="Bold"/>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="0" Name="lblVitesse"  FontSize="100" FontWeight="Bold"/>
-                        <Label Content="Tour/min " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
+                        <Label Content="Tour " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
                 
