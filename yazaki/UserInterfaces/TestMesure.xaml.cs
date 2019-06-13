@@ -37,6 +37,7 @@ namespace yazaki.UserInterfaces
             operateur = op;
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
+            
 
             produits = new List<Produit>();
             Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
@@ -170,11 +171,13 @@ namespace yazaki.UserInterfaces
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             atoTextBox.Focusable = false;
+            atoTextBox.IsReadOnly = true;
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             maiTextBox.Focusable = false;
+            maiTextBox.IsReadOnly = true;
         }
     }
 }
