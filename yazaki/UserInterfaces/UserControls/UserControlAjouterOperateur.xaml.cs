@@ -10,11 +10,11 @@ namespace yazaki.UserInterfaces.UserControls
     /// <summary>
     /// Logique d'interaction pour UserControlAjouter.xaml
     /// </summary>
-    public partial class UserControlAjouterC : UserControl
+    public partial class UserControlAjouterOperateur : UserControl
     {
         private Formateurs formateur;
 
-        public UserControlAjouterC(Formateurs form)
+        public UserControlAjouterOperateur(Formateurs form)
         {
             InitializeComponent();
             formateur = form;
@@ -72,9 +72,9 @@ namespace yazaki.UserInterfaces.UserControls
                 oper.Coordonnee = cord;
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
                 {
-                    unitOfWork.Operateurs.Add(oper);
                     try
                     {
+                        unitOfWork.Operateurs.Add(oper);
                         unitOfWork.Save();
                         succesmessage.Text = "Opérateur ajouter avec succès";
 

@@ -27,8 +27,6 @@ namespace yazaki.UserInterfaces
         private Operateurs operateur;
         private Formateurs formateur;
         private String niveau;
-        private LinearGradientBrush brush;
-       
 
         private int Score = 0;
         private int time;
@@ -40,11 +38,8 @@ namespace yazaki.UserInterfaces
             formateur = form;
             operateur = op;
             nomLbl.Content = op.FullName;
-            IDLbl.Content = op.Id;
-            brush = pgBar.Foreground as LinearGradientBrush;
 
-
-            if (niveau == "Debutant")
+            if(niveau == "Debutant")
             {
                 time = 3600;
             }else if(niveau == "Intérmediare")
@@ -69,17 +64,6 @@ namespace yazaki.UserInterfaces
                 port.Close();
                 addResult();
             }
-
-            LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
-            myLinearGradientBrush.StartPoint = brush.StartPoint;
-            myLinearGradientBrush.EndPoint = brush.EndPoint;
-            double progress = pgBar.Value / (pgBar.Maximum - pgBar.Minimum);
-            foreach (GradientStop stop in brush.GradientStops)
-            {
-                myLinearGradientBrush.GradientStops.Add(new GradientStop(stop.Color, (stop.Offset * (1.0d / progress))));
-            }
-
-            pgBar.Foreground = myLinearGradientBrush;
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -89,7 +73,7 @@ namespace yazaki.UserInterfaces
             {
                 port = new SerialPort();
                 port.BaudRate = 9600;
-                port.PortName = Options.PORT;
+                port.PortName = "COM8";
 
                 port.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
                 port.Open();
@@ -125,7 +109,7 @@ namespace yazaki.UserInterfaces
                         Score++;
                     });
                     break;
-                case "2" :
+                case "2":
                     this.Dispatcher.Invoke(() =>
                     {
                         rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
@@ -239,8 +223,6 @@ namespace yazaki.UserInterfaces
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            if (port != null)
-                port.Close();
         }
     }
 }

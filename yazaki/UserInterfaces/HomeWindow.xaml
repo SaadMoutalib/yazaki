@@ -6,29 +6,44 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki"
         mc:Ignorable="d"
-        Title="HomeWindow" Height="auto" Width="auto"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
+        Title="HomeWindow" Height="1080" Width="1920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="../Assets/KSuxeMws_400x400.png">
     <DockPanel Background="WhiteSmoke">
-        <Grid DockPanel.Dock="Top" Height="40" Margin="0">
-            <StackPanel HorizontalAlignment="Left" Margin="20,8,20,0">
-                <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
-                    <ComboBoxItem Content="FR"/>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Width="70" TextDecorations="{x:Null}" TextAlignment="Center" Text="Logged in as"/>
-                <TextBlock Margin="5" Name="userLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Width="auto" TextDecorations="{x:Null}" TextAlignment="Center"/>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="logOutButton_Click">
-                    <materialDesign:PackIcon Kind="Logout" Foreground="#FFA2A2A2" Width="25" Height="25" />
-                </Button>
+        
+        <Grid DockPanel.Dock="Top" Height="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Margin="20 20 0 0" Source="../Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="50 0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <StackPanel Background="#FFF0F0F0" Orientation="Horizontal">
+                        <StackPanel.Effect>
+                            <DropShadowEffect BlurRadius="10" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                        </StackPanel.Effect>
+                        <TextBlock Margin="20 0 0 0" FontSize="15" Name="userLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF404040" Width="auto" TextDecorations="{x:Null}" TextAlignment="Center"/>
+                        <materialDesign:PackIcon Margin="5 0 10 0"  Kind="Person" Foreground="#FF404040" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Button Margin="5 0 5 0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="logOutButton_Click">
+                    <materialDesign:PackIcon Kind="Logout" Foreground="#FFA2A2A2" Width="30" Height="30" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="optionsButton_Click">
+                        <materialDesign:PackIcon Kind="Cog" Foreground="#FFA2A2A2" Width="30" Height="30" />
+                    </Button>
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" Click="exitButton_Click">
+                        <materialDesign:PackIcon Kind="Clear" Foreground="#FFA2A2A2" Width="30" Height="30" />
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
-        <Grid DockPanel.Dock="Top" Height="70">
-            <Image Source="../Assets/Yazaki_company_logo.png" Height="50" Width="330" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0" />
 
+        <Grid DockPanel.Dock="Top" Height="60">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10 0" HorizontalAlignment="Left">
                 <Button Uid="0" Width="180" Content="Ajouter un candidat" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click" />
                 <Button Uid="1" Width="180" Content="Commencer un test" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
-                <Button Uid="2" Width="180" Content="Candidats" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="2" Width="180" Content="Operateurs" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
                 <Button Uid="3" Width="180" Content="Ajouter un formateur" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
             </StackPanel>
             <Grid x:Name="GridCursor" Width="180" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" VerticalAlignment="Bottom"/>

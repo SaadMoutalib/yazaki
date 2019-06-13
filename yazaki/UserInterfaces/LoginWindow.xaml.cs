@@ -36,12 +36,12 @@ namespace yazaki.UserInterfaces
             {
                 int id = Convert.ToInt32(idTextBox.Text);
                 string password = passwordBox.Password;
-
+          
                 Formateurs formateur;
 
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
                 {
-                    formateur = unitOfWork.Formateurs.Find(s => s.Id == id && s.password == password);
+                        formateur = unitOfWork.Formateurs.Find(s => s.Id == id && s.password == password);
                 }
 
                 if (formateur == null)
@@ -53,6 +53,9 @@ namespace yazaki.UserInterfaces
                     new HomeWindow(formateur).Show();
                     this.Close();
                 }
+                  
+                
+                
             }
             
         }

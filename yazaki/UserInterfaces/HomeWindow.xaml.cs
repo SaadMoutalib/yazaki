@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using yazaki.Data;
 using yazaki.UserInterfaces.UserControls;
 
 namespace yazaki.UserInterfaces
@@ -10,11 +11,12 @@ namespace yazaki.UserInterfaces
     /// </summary>
     public partial class HomeWindow : Window
     {
-        Formateurs user;
+        private Formateurs user;
+
         public HomeWindow(Formateurs f)
         {
             InitializeComponent();
-            GridMain.Children.Add(new UserControlAjouterC(f));
+            GridMain.Children.Add(new UserControlAjouterOperateur(f));
             user = f;
             userLabel.Text = f.nom+" "+f.prenom;
         }
@@ -29,7 +31,7 @@ namespace yazaki.UserInterfaces
             {
                 case 0:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlAjouterC(user));
+                    GridMain.Children.Add(new UserControlAjouterOperateur(user));
                     break;
                 case 1:
                     GridMain.Children.Clear();
@@ -37,11 +39,11 @@ namespace yazaki.UserInterfaces
                     break;
                 case 2:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlCandidats());
+                    GridMain.Children.Add(new UserControlListOperateurs());
                     break;
                 case 3:
                     GridMain.Children.Clear();
-                    GridMain.Children.Add(new UserControlAjouterF());
+                    GridMain.Children.Add(new UserControlAjouterFormateur());
                     break;
             }
         }
@@ -49,6 +51,20 @@ namespace yazaki.UserInterfaces
         private void logOutButton_Click(object sender, RoutedEventArgs e)
         {
             new LoginWindow().Show();
+            this.Close();
+        }
+
+        private void optionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionsWindow option = new OptionsWindow();
+            if (option.ShowDialog() == true)
+            {
+                Options.PORT = option.Port;
+            }
+        }
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

@@ -20,39 +20,43 @@ namespace yazaki.UserInterfaces
     /// <summary>
     /// Logique d'interaction pour TestInsertion.xaml
     /// </summary>
-    public partial class TestInsertion : Window
+    public partial class TestCrimping : Window
     {
         private SerialPort port;
         private DispatcherTimer timer;
         private Operateurs operateur;
         private Formateurs formateur;
         private String niveau;
-        private LinearGradientBrush brush;
-       
+        private LinearGradientBrush brush ;
 
+        private int time = 3600;
         private int Score = 0;
-        private int time;
+        private int tries = 0;
 
-        public TestInsertion(String _niveau,Operateurs op,Formateurs form)
+        private string green = "/yazaki;component/Assets/green-led-md.png";
+        private string red = "/yazaki;component/Assets/red-led-md.png";
+
+        public TestCrimping(String _niveau,Operateurs op,Formateurs form )
         {
             InitializeComponent();
-            niveau = _niveau;
-            formateur = form;
             operateur = op;
+            formateur = form;
+            niveau = _niveau;
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
             brush = pgBar.Foreground as LinearGradientBrush;
 
-
             if (niveau == "Debutant")
             {
                 time = 3600;
-            }else if(niveau == "Intérmediare")
+            }
+            else if (niveau == "Intérmediare")
             {
                 time = 2400;
             }
-            else{
-                time = 1800;
+            else
+            {
+                time = 800;
             }
         }
 
@@ -67,6 +71,14 @@ namespace yazaki.UserInterfaces
             {
                 timer.Stop();
                 port.Close();
+                for(int i = tries+1; i <= 10; i++)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        Image image = stackPanel.FindName("img" + i) as Image;
+                        image.Source = new BitmapImage(new Uri(red, UriKind.Relative));
+                    });
+                }
                 addResult();
             }
 
@@ -74,7 +86,7 @@ namespace yazaki.UserInterfaces
             myLinearGradientBrush.StartPoint = brush.StartPoint;
             myLinearGradientBrush.EndPoint = brush.EndPoint;
             double progress = pgBar.Value / (pgBar.Maximum - pgBar.Minimum);
-            foreach (GradientStop stop in brush.GradientStops)
+            foreach(GradientStop stop in brush.GradientStops)
             {
                 myLinearGradientBrush.GradientStops.Add(new GradientStop(stop.Color, (stop.Offset * (1.0d / progress))));
             }
@@ -115,91 +127,40 @@ namespace yazaki.UserInterfaces
         {
             string test = port.ReadLine();
             test = test.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
-
-            switch (test)
-            {
-                case "1":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "2" :
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "3":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "4":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "5":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    }); 
-                    break;
-                case "6":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "7":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "8":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "9":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-                case "10":
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
-                    });
-                    break;
-            }
-
+           
+            tries++;
+            Image image=null;
             this.Dispatcher.Invoke(() =>
             {
-                lblResultat.Content = Score + "/10";
+                image = stackPanel.FindName("img" + tries) as Image;
             });
 
-            if (Score == 10)
+            
+
+            if (test == "OKAY")
+            {
+                Score++;
+                this.Dispatcher.Invoke(() =>
+                {
+                    image.Source = new BitmapImage(new Uri(green, UriKind.Relative));
+                    resultat.Content = Score + "/10";
+                });
+            }
+            else if (test == "NOT OKAY")
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    image.Source = new BitmapImage(new Uri(red, UriKind.Relative));
+                });
+            }
+
+            if(tries == 10)
             {
                 port.Close();
                 timer.Stop();
+                addResult();
             }
+            
 
         }
 
@@ -207,14 +168,15 @@ namespace yazaki.UserInterfaces
         {
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Insertion";
+            test.type = "Cramping";
+            test.nom_test = "Cramping";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.nom_test = "Insertion";
             test.resultat = Score;
-            if (Score > 5)
+            if (Score > 10)
             {
                 test.passed = true;
+
             }
             else
             {
