@@ -12,20 +12,35 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="White">
                 <Label Content="Liste des Operateurs" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18" Margin="0 20 0 0"/>
                 <Label Name="tstlbl" />
-                <DataGrid Name="dataGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-                    <DataGrid.Columns>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Id}" Header="Id" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding nom}" Header="Nom" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding prenom}" Header="Prenom" MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Adresse}" Header="Adresse" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Sexe}" Header="Sexe" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Ville}" Header="Ville" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Tel}" Header="Tel" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Email}" Header="Email" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.postalCode}" Header="Code Postal" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.dateOfBirth}" Header="Annee de naissance" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <StackPanel Orientation="Horizontal">
+                    <DataGrid SelectionUnit="FullRow" IsReadOnly="true" SelectionChanged="DataGrid_SelectionChanged" MaxHeight="500" Name="opGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                        <DataGrid.Columns>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Id}" Header="Id" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding nom}" Header="Nom" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding prenom}" Header="Prenom" MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Adresse}" Header="Adresse" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Sexe}" Header="Sexe" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Ville}" Header="Ville" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Tel}" Header="Tel" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.Email}" Header="Email" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.postalCode}" Header="Code Postal" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.dateOfBirth}" Header="Annee de naissance" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid Visibility="Collapsed" SelectionUnit="FullRow" IsReadOnly="true" SelectionChanged="DataGrid_SelectionChanged" MaxHeight="500" Name="testGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                        <DataGrid.Columns>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Id}" Header="Id" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding type}" Header="Type" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding resultat}" Header="Resultat" MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding date}" Header="Date" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding Formateur.nom}" Header="Formateur" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding niveau}" Header="Niveau" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding nom_test}" Header="Nom test" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <materialDesign:MaterialDataGridTextColumn Binding="{Binding passed}" Header="Passé" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                
             </StackPanel>
         </materialDesign:TransitioningContent>
        
