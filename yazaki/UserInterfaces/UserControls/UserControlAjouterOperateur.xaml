@@ -21,13 +21,19 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="15">
-
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="nomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Prenom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="prenomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" Margin="0 10 5 10" materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="nomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                                <TextBox Grid.Column="1" Margin="5 10 0 10"  materialDesign:HintAssist.Hint="Prenom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="prenomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            </Grid>
                             <StackPanel Height="40" Margin="0,10" Orientation="Horizontal">
-                                <RadioButton Name="male" Margin="0 20 10 0" GroupName="Sexe" Style="{StaticResource MaterialDesignRadioButton}">Male
-                                </RadioButton>
-                                <RadioButton Name="female" Margin="0 20 10 0" GroupName="Sexe" Style="{StaticResource MaterialDesignRadioButton}" Content="Female"/>
+                            <RadioButton Name="male" Margin="0 20 10 0" GroupName="Sexe" Style="{StaticResource MaterialDesignRadioButton}">Male
+                            </RadioButton>
+                            <RadioButton Name="female" Margin="0 20 10 0" GroupName="Sexe" Style="{StaticResource MaterialDesignRadioButton}" Content="Female"/>
                             </StackPanel>
                             <ComboBox Name="civilStatus" Margin="0,10" materialDesign:HintAssist.Hint="Statut civil" IsEditable="True">
                                 <ComboBoxItem>Marier</ComboBoxItem>

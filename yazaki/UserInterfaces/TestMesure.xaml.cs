@@ -40,7 +40,7 @@ namespace yazaki.UserInterfaces
 
             produits = new List<Produit>();
             Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
-            Produit p2 = new Produit("7116-4285-(02) SB", "1308 F025", "0.35", 1.85, 0.9, 1.1, 0.9);
+            Produit p2 = new Produit("7116-4285-(02) SB", "1308 F026", "0.36", 1.85, 0.9, 1.1, 0.9);
 
             produits.Add(p1);
             produits.Add(p2);
@@ -175,6 +175,11 @@ namespace yazaki.UserInterfaces
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             maiTextBox.Focusable = false;
+        }
+
+        private void RefCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

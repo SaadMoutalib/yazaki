@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using yazaki.Data;
@@ -67,6 +68,7 @@ namespace yazaki.UserInterfaces.UserControls
                 cord.postalCode = Int32.Parse(postalCode.Text);
                 cord.jobTitle = jobTitle.Text;
                 cord.Operateur = oper;
+                oper.Id = Convert.ToInt32(idTextBox.Text);
                 oper.nom = nomTextBox.Text;
                 oper.prenom = prenomTextBox.Text;
                 oper.Coordonnee = cord;
@@ -105,6 +107,12 @@ namespace yazaki.UserInterfaces.UserControls
             Operateurs oper = ajouterOperateur();
             if(oper != null)
                 openTestTab(oper);
+        }
+
+        private void IdTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

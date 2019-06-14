@@ -41,9 +41,9 @@ namespace yazaki.Data
         {
             return Entities.ToList();
         }
-        public IEnumerable<T> GetAllObject(string children)
+        public IEnumerable<T> GetAllObject(string children, string children2)
         {
-            return Entities.Include(children).ToList();
+            return Entities.Include(children).Include(children2).ToList();
         }
         public IEnumerable<T> GetAllQuery(Expression<Func<T, bool>> predicate)
         {

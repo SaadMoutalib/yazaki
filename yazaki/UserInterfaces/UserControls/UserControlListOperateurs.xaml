@@ -27,7 +27,7 @@
                             <materialDesign:MaterialDataGridTextColumn Binding="{Binding Coordonnee.dateOfBirth}" Header="Annee de naissance" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid Visibility="Collapsed" SelectionUnit="FullRow" IsReadOnly="true" SelectionChanged="DataGrid_SelectionChanged" MaxHeight="500" Name="testGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                    <DataGrid  SelectionUnit="FullRow" IsReadOnly="true" SelectionChanged="DataGrid_SelectionChanged" MaxHeight="500" Name="testGrid" Margin="20" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
                         <DataGrid.Columns>
                             <materialDesign:MaterialDataGridTextColumn Binding="{Binding Id}" Header="Id" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             <materialDesign:MaterialDataGridTextColumn Binding="{Binding type}" Header="Type" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />

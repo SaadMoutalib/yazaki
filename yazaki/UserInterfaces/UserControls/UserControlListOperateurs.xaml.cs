@@ -16,7 +16,7 @@ namespace yazaki.UserInterfaces.UserControls
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
             {
-                List<Operateurs> ops = unitOfWork.Operateurs.GetAllObject("Coordonnee") as List<Operateurs>;
+                List<Operateurs> ops = unitOfWork.Operateurs.GetAllObject("Coordonnee", "Tests.Formateur") as List<Operateurs>;
                
                 opGrid.ItemsSource = ops;
             }
@@ -27,19 +27,8 @@ namespace yazaki.UserInterfaces.UserControls
             var operateur = opGrid.SelectedItem as Operateurs;
             if (operateur != null)
             {
-                using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
-                {
-                    List<Test> tests = unitOfWork.Tests.GetAllQuery(s => s.id_op == operateur.Id) as List<Test>;
-                    if(tests != null)
-                    {
-                        testGrid.ItemsSource = tests;
-                        testGrid.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        testGrid.Visibility = Visibility.Collapsed;
-                    }
-                }
+                testGrid.ItemsSource = operateur.Tests;
+               
             }
         }
 

@@ -22,14 +22,17 @@
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Height="492" Margin="760,204,760,294">
-                <ComboBox ItemsSource="{Binding}" DisplayMemberPath="reference_Terminal" SelectedValuePath="reference_Terminal" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Reference Terminal"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="refCombo" IsEditable="True"/>
-                <ComboBox ItemsSource="{Binding}" DisplayMemberPath="Code_Inventaire_Applicateur" SelectedValuePath="Code_Inventaire_Applicateur" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Code inventaire d'applicateur"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="codeCombo" IsEditable="True"/>
-                <ComboBox ItemsSource="{Binding}" DisplayMemberPath="Section_fil" SelectedValuePath="Section_fil" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Section de fil"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="secCombo" IsEditable="True"/>
-                <TextBox  Margin="5" materialDesign:HintAssist.Hint="Ato-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="atoTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                <TextBox  Margin="5" materialDesign:HintAssist.Hint="Mai-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="maiTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                <Label Margin="0 50 0 50" Content="" Name="resultat" FontSize="50" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Center" Width="auto"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Margin="100,0" Content="0" Name="resultat" FontSize="100" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                <StackPanel Orientation="Vertical">
+                    <ComboBox SelectionChanged="RefCombo_SelectionChanged" ItemsSource="{Binding}" DisplayMemberPath="reference_Terminal" SelectedValuePath="reference_Terminal" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Reference Terminal"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="refCombo" IsEditable="True"/>
+                    <ComboBox ItemsSource="{Binding}" DisplayMemberPath="Code_Inventaire_Applicateur" SelectedValuePath="Code_Inventaire_Applicateur" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Code inventaire d'applicateur"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="codeCombo" IsEditable="True"/>
+                    <ComboBox ItemsSource="{Binding}" DisplayMemberPath="Section_fil" SelectedValuePath="Section_fil" Grid.Row="0" Margin="0,10" materialDesign:HintAssist.Hint="Section de fil"  FontFamily="Champagne &amp; Limousines" FontSize="20" Name="secCombo" IsEditable="True"/>
+                    <TextBox  Margin="5" materialDesign:HintAssist.Hint="Ato-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="atoTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                    <TextBox  Margin="5" materialDesign:HintAssist.Hint="Mai-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="maiTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                    <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Center" Width="auto"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
+                </StackPanel>
             </StackPanel>
             
 

@@ -14,7 +14,7 @@ namespace yazaki.Data
         void Delete(T entity);
         T GetBykey(object id);
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetAllObject(string children);
+        IEnumerable<T> GetAllObject(string children, string children2);
         IEnumerable<T> GetAllQuery(Expression<Func<T, bool>> predicate);
         T Find(Expression<Func<T, bool>> predicate);
     }
