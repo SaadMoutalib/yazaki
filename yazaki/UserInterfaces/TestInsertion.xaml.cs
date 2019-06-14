@@ -28,7 +28,17 @@ namespace yazaki.UserInterfaces
         private Formateurs formateur;
         private String niveau;
         private LinearGradientBrush brush;
-       
+        private bool case1 = false;
+        private bool case2 = false;
+        private bool case3 = false;
+        private bool case4 = false;
+        private bool case5 = false;
+        private bool case6 = false;
+        private bool case7= false;
+        private bool case8= false;
+        private bool case9 = false;
+        private bool case10 = false;
+
 
         private int Score = 0;
         private int time;
@@ -121,75 +131,226 @@ namespace yazaki.UserInterfaces
                 case "1":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case1 == false)
+                        {
+                            rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case1 = true;
+                        }
                     });
                     break;
                 case "2" :
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case2 == false)
+                        {
+                            rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case2 = true;
+                        }
                     });
                     break;
                 case "3":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case3 == false)
+                        {
+                            rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case3 = true;
+                        }
                     });
                     break;
                 case "4":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case4 == false)
+                        {
+                            rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case4 = true;
+                        }
                     });
                     break;
                 case "5":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case5 == false)
+                        {
+                            rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case5 = true;
+                        }
                     }); 
                     break;
                 case "6":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case6 == false)
+                        {
+                            rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case6 = true;
+                        }
                     });
                     break;
                 case "7":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case7 == false)
+                        {
+                            rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case7 = true;
+                        }
                     });
                     break;
                 case "8":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case8 == false)
+                        {
+                            rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case8 = true;
+                        }
                     });
                     break;
                 case "9":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case9 == false)
+                        {
+                            rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case9 = true;
+                        }
                     });
                     break;
                 case "10":
                     this.Dispatcher.Invoke(() =>
                     {
-                        rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
-                        Score++;
+                        if (case10 == false)
+                        {
+                            rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Green);
+                            Score++;
+                            case10 = true;
+                        }
+                    });
+                    break;
+
+                case "-1":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case1 == false)
+                        {
+                            rect1.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case1 = true;
+                        }
+                    });
+                    break;
+                case "-2":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case2 == false)
+                        {
+                            rect2.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                           
+                            case2 = true;
+                        }
+                    });
+                    break;
+                case "-3":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case3 == false)
+                        {
+                            rect3.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case3 = true;
+                        }
+                    });
+                    break;
+                case "-4":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case4 == false)
+                        {
+                            rect4.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case4 = true;
+                        }
+                    });
+                    break;
+                case "-5":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case5 == false)
+                        {
+                            rect5.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                           
+                            case5 = true;
+                        }
+                    });
+                    break;
+                case "-6":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case6 == false)
+                        {
+                            rect6.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case6 = true;
+                        }
+                    });
+                    break;
+                case "-7":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case7 == false)
+                        {
+                            rect7.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case7 = true;
+                        }
+                    });
+                    break;
+                case "-8":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case8 == false)
+                        {
+                            rect8.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case8 = true;
+                        }
+                    });
+                    break;
+                case "-9":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case9 == false)
+                        {
+                            rect9.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case9 = true;
+                        }
+                    });
+                    break;
+                case "-10":
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        if (case10 == false)
+                        {
+                            rect10.Fill = new SolidColorBrush(System.Windows.Media.Colors.Red);
+                            
+                            case10 = true;
+                        }
                     });
                     break;
             }
-
+            
             this.Dispatcher.Invoke(() =>
             {
                 lblResultat.Content = Score + "/10";
@@ -197,6 +358,8 @@ namespace yazaki.UserInterfaces
 
             if (Score == 10)
             {
+                if(niveau != "Avancé")
+                    next.Visibility = Visibility.Visible;
                 port.Close();
                 timer.Stop();
             }
@@ -211,8 +374,8 @@ namespace yazaki.UserInterfaces
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Insertion";
-            test.resultat = Score;
-            if (Score > 5)
+            test.resultat = (Score/10)*100;
+            if (Score == 100)
             {
                 test.passed = true;
             }
@@ -241,6 +404,19 @@ namespace yazaki.UserInterfaces
             this.Close();
             if (port != null)
                 port.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (niveau == "Debutant")
+            {
+                new TestInsertion("Intérmediare", operateur, formateur);
+            }
+            else if (niveau == "Intérmediare")
+            {
+                new TestInsertion("Avancé", operateur, formateur);
+            }
+            
         }
     }
 }

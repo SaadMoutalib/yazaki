@@ -76,6 +76,10 @@
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <Label Margin="0,100" Content="0/10" Name="lblResultat" FontSize="80" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+            <StackPanel Name="next" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail ! Passer au niveau suivant" ></Label>
+                <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant" Click="Button_Click" Background="#FF04A629"></Button>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

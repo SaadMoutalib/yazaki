@@ -17,7 +17,8 @@
             <Label Content="50% " Margin="950,160,898,0" FontSize="20" FontWeight="Bold" Width="65" VerticalAlignment="Top" />
             <Label Content="75% " Margin="1200,160,673,0" FontSize="20" FontWeight="Bold" Width="56" VerticalAlignment="Top" />
             <Label Content="100% " Margin="1450,160,398,0" FontSize="20" FontWeight="Bold" Width="70" VerticalAlignment="Top" />
-            
+            <Label Content="" Margin="944,700,944.5,0" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Height="79" Name="Instructions" />
+
             <ProgressBar Minimum="0" Name="pgBar" Height="30" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="460,195,460,0" Grid.ColumnSpan="2" Background="#FF90CAF9" RenderTransformOrigin="0.5,0.5">
 
                 <ProgressBar.Foreground>
@@ -43,6 +44,7 @@
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
+                <Button Margin="10" Content="try again" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="27" Name="restartButton" Click="RestartButton_Click"  Background="#FFF3D621" BorderBrush="#FFF3D621" />
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -53,10 +55,13 @@
                         <Label Content="Tour " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
-                
-                
-            </StackPanel>
 
+
+            </StackPanel>
+            <StackPanel Name="next" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail ! Passer au niveau suivant" ></Label>
+                <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant" Click="Button_Click"  Background="#FF04A629"></Button>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

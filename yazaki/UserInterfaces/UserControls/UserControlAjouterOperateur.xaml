@@ -21,7 +21,7 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="15">
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Matricul" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*" />

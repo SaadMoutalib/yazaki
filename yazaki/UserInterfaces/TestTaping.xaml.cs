@@ -26,7 +26,6 @@ namespace yazaki.UserInterfaces
 
         private SerialPort port;
         private DispatcherTimer timer;
-        private DispatcherTimer timer2;
         private Operateurs operateur;
         private Formateurs formateur;
         private String niveau;
@@ -34,6 +33,8 @@ namespace yazaki.UserInterfaces
         private bool Start = false;
         private int Score = 0;
         private int time;
+        private int target;
+        private int tries = 5;
         //private double time2;
         //private double Vitesse;
 
@@ -65,15 +66,18 @@ namespace yazaki.UserInterfaces
 
             if (niveau == "Debutant")
             {
+                target = 110;
                 time = 3600;
             }
             else if (niveau == "Intérmediare")
             {
-                time = 2400;
+                target = 130;
+                time = 3600;
             }
             else
             {
-                time = 1800;
+                target = 180;
+                time = 3600;
             }
         }
 
@@ -88,10 +92,16 @@ namespace yazaki.UserInterfaces
             else
             {
                 Start = false;
-                
+                restartButton.Visibility = Visibility.Visible;
                 timer.Stop();
                 port.Close();
-                addResult();
+                tries--;
+                if(Score >= target && niveau != "Avancé")
+                {
+                    addResult();
+                    next.Visibility = Visibility.Visible;
+                }
+                
             }
 
             LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
@@ -119,22 +129,13 @@ namespace yazaki.UserInterfaces
             timer.Tick += timer_Tick;
             timer.Start();
 
-            /*timer2 = new DispatcherTimer();
-            timer2.Interval = TimeSpan.FromMilliseconds(1);
-            timer2.Tick += timer2_Tick;
-            timer2.Start();*/
-
-
             startButton.Background = Brushes.Red;
             startButton.IsEnabled = false;
             pgBar.Maximum = time;
 
         }
 
-        /*void timer2_Tick(object sender, EventArgs e)
-        {
-            time2++;
-        }*/
+       
 
 
         void DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -172,8 +173,8 @@ namespace yazaki.UserInterfaces
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Taping";
-            test.resultat = Score;
-            if (Score > 120)
+            test.resultat = (Score/target)*100;
+            if ((Score / target) * 100 > 100)
             {
                 test.passed = true;
             }
@@ -207,5 +208,25 @@ namespace yazaki.UserInterfaces
             
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (niveau == "Debutant")
+            {
+                new TestInsertion("Intérmediare", operateur, formateur);
+            }
+            else if (niveau == "Intérmediare")
+            {
+                new TestInsertion("Avancé", operateur, formateur);
+            }
+        }
+
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                startButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            });
+            restartButton.Visibility = Visibility.Collapsed;
+        }
     }
 }
