@@ -22,18 +22,19 @@ namespace yazaki.UserInterfaces
     /// <summary>
     /// Interaction logic for TestTaping.xaml
     /// </summary>
-    public partial class TestMesure : Window
+    public partial class TestCrimpingSetup : Window
     {
         
 
         private Operateurs operateur;
         private Formateurs formateur;
-        private int Score = 0;
+        private int Score = 10;
         private string affichage= "";
-        private List<Produit> produits;
+        private Produit produit;
         private int tries;
+        private bool isValide;
 
-        public TestMesure(Operateurs op, Formateurs form)
+        public TestCrimpingSetup(Operateurs op, Formateurs form)
         {
             InitializeComponent();
             formateur = form;
@@ -41,20 +42,8 @@ namespace yazaki.UserInterfaces
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
 
-            produits = new List<Produit>();
-            Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
-            Produit p2 = new Produit("7116-4225-(02) SB", "1308 F026", "0.36", 2.85, 1.59, 1.1, 0.9);
-            Produit p3 = new Produit("7116-4878-(05) SB", "1308 E027", "0.39", 1.85, 1.65, 1.1, 1.04);
-            Produit p4 = new Produit("7116-4285-(02) SB", "1308 F028", "0.37", 2.85, 1.59, 1.1, 0.9);
-            Produit p5 = new Produit("7116-4785-(02) SB", "1308 F029", "0.42", 2.85, 1.59, 1.1, 0.9);
-
-            produits.Add(p1);
-            produits.Add(p2);
-            produits.Add(p3);
-            produits.Add(p4);
-            produits.Add(p5);
-            list.ItemsSource = produits;
-            list.SelectedItem = p1;
+            produit = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
+            this.DataContext = produit;
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -65,11 +54,7 @@ namespace yazaki.UserInterfaces
         private void StartMethod()
         {
             errormessage.Text = "";
-            if (list.SelectedItem as Produit == null)
-            {
-                errormessage.Text = "Selectionner un terminal";
-            }
-            else if (atoTextBox.Text == "")
+            if (atoTextBox.Text == "")
             {
                 atoTextBox.Focus();
             }
@@ -81,62 +66,44 @@ namespace yazaki.UserInterfaces
             {
                 double mai = Convert.ToDouble(maiTextBox.Text.Replace('.',','));
                 double ato = Convert.ToDouble(atoTextBox.Text.Replace('.', ','));
-                Produit prod = list.SelectedItem as Produit;
-                ListBoxItem item = (ListBoxItem)list.ItemContainerGenerator.ContainerFromIndex(list.SelectedIndex);
 
                 tries++;
-                if (mai <= prod.max_mai && mai > prod.min_mai)
+                if (mai <= produit.max_mai && mai > produit.min_mai)
                 {
-                    if (ato <= prod.max_ato && ato > prod.min_ato)
+                    if (ato <= produit.max_ato && ato > produit.min_ato)
                     {
-                        affichage = "Valide";
-                        Score++;
+                        isValide = true;
+                        
                     }
                     else
                     {
-                        affichage = "Non Valide";
+                        isValide = false;
+                        Score--;
                     }
                 }
                 else
                 {
-                    affichage = "Non Valide";
+                    isValide = false;
+                    Score--;
                 }
                 
-                if(affichage == "Valide")
+                if(isValide)
                 {
-                    item.IsEnabled = false;
-                    item.Background = Brushes.MediumSeaGreen;
                     valide.Foreground = Brushes.ForestGreen;
+                    valide.Content = "Validé";
                 }
                 else
                 {
-                    item.IsEnabled = false;
-                    item.Background = Brushes.IndianRed;
                     valide.Foreground = Brushes.OrangeRed;
+                    valide.Content = "Non valide";
                 }
 
-                valide.Content = affichage;
                 resultat.Content = Score;
 
-                if(tries == 5)
+                if(isValide || tries == 10)
                     addResult();
             }
             
-        }
-
-        private Produit GetProduit(string reference_Terminal)
-        {
-            Produit produit = new Produit();
-            
-            foreach(Produit prod in produits)
-            {
-                if (prod.reference_Terminal == reference_Terminal)
-                {
-                    produit = prod;
-                    return produit;
-                }
-            }
-            return null;
         }
 
         private void addResult()
@@ -179,18 +146,15 @@ namespace yazaki.UserInterfaces
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            atoTextBox.IsReadOnly = true;
             atoTextBox.Focusable = false;
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            atoTextBox.IsReadOnly = true;
             maiTextBox.Focusable = false;
         }
 
-        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            maiTextBox.Text = "";
-            atoTextBox.Text = "";
-        }
     }
 }

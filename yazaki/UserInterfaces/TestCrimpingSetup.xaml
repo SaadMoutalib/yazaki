@@ -1,4 +1,4 @@
-﻿<Window x:Class="yazaki.UserInterfaces.TestMesure"
+﻿<Window x:Class="yazaki.UserInterfaces.TestCrimpingSetup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,15 +38,30 @@
                 <Label Name="IDLbl" Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button Margin="10" Content="Confirm" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
+                <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                
-                <ListBox SelectionChanged="List_SelectionChanged" Name="list" Width="400" SelectedValuePath="reference_Terminal" ItemTemplate="{StaticResource listBoxTemplate}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                </ListBox>
+
+                <StackPanel Background="#FFE5E5E5" Height="50" Margin="5" Orientation="Horizontal" >
+                    <StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="5" Direction="0" ShadowDepth="0" Color="#FF292929"/>
+                    </StackPanel.Effect>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <Label Content="Reference Terminal" FontSize="10"/>
+                        <TextBlock Text="{Binding reference_Terminal}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <Label Content="Code Inventaire Applicateur" FontSize="10"/>
+                        <TextBlock Text="{Binding Code_Inventaire_Applicateur}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <Label Content="Section Fil" FontSize="10"/>
+                        <TextBlock Text="{Binding Section_fil}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
                 <StackPanel Margin="200 0 100 0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="0" Name="resultat" FontSize="50" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label Content="10" Name="resultat" FontSize="50" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Label Content="" Name="valide" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
