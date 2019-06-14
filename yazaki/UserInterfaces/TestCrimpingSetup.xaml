@@ -38,15 +38,13 @@
                 <Label Name="IDLbl" Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
+                <Button Margin="10" Content="Confirm" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-                <StackPanel Background="#FFE5E5E5" Height="50" Margin="5" Orientation="Horizontal" >
-                    <StackPanel.Effect>
-                        <DropShadowEffect BlurRadius="5" Direction="0" ShadowDepth="0" Color="#FF292929"/>
-                    </StackPanel.Effect>
+                <StackPanel Background="#FFEAEAEA" Height="70" Margin="5" Orientation="Horizontal" >
+                    
                     <StackPanel Margin="5" Orientation="Vertical">
                         <Label Content="Reference Terminal" FontSize="10"/>
                         <TextBlock Text="{Binding reference_Terminal}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
@@ -65,8 +63,8 @@
                     <Label Content="" Name="valide" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Ato-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="atoTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                    <TextBox Margin="5" materialDesign:HintAssist.Hint="Mai-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="maiTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                    <TextBox TextChanged="AtoTextBox_TextChanged" Margin="5" materialDesign:HintAssist.Hint="Ato-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="atoTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                    <TextBox TextChanged="MaiTextBox_TextChanged" Margin="5" materialDesign:HintAssist.Hint="Mai-ashi measure" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" Name="maiTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
                     <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Center" Width="auto"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
                 </StackPanel>
             </StackPanel>

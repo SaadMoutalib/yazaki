@@ -64,6 +64,8 @@ namespace yazaki.UserInterfaces
 
         private void StartMethod()
         {
+            atoTextBox.IsReadOnly = false;
+            maiTextBox.IsReadOnly = false;
             errormessage.Text = "";
             if (list.SelectedItem as Produit == null)
             {
@@ -85,6 +87,7 @@ namespace yazaki.UserInterfaces
                 ListBoxItem item = (ListBoxItem)list.ItemContainerGenerator.ContainerFromIndex(list.SelectedIndex);
 
                 tries++;
+
                 if (mai <= prod.max_mai && mai > prod.min_mai)
                 {
                     if (ato <= prod.max_ato && ato > prod.min_ato)
@@ -117,9 +120,14 @@ namespace yazaki.UserInterfaces
 
                 valide.Content = affichage;
                 resultat.Content = Score;
-
-                if(tries == 5)
+                if(tries < 5)
+                    list.SelectedItem = list.Items[tries];
+                if (tries == 5)
+                {
                     addResult();
+                    startButton.IsEnabled = false;
+                }
+                    
             }
             
         }
@@ -179,11 +187,17 @@ namespace yazaki.UserInterfaces
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            atoTextBox.IsReadOnly = true;
+            if(maiTextBox.Text=="")
+                maiTextBox.Focus();
             atoTextBox.Focusable = false;
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            maiTextBox.IsReadOnly = true;
+            if (atoTextBox.Text == "")
+                atoTextBox.Focus();
             maiTextBox.Focusable = false;
         }
 
@@ -191,6 +205,7 @@ namespace yazaki.UserInterfaces
         {
             maiTextBox.Text = "";
             atoTextBox.Text = "";
+            atoTextBox.Focus();
         }
     }
 }

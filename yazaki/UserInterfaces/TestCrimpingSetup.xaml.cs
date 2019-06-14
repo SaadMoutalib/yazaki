@@ -53,6 +53,8 @@ namespace yazaki.UserInterfaces
 
         private void StartMethod()
         {
+            atoTextBox.IsReadOnly = false;
+            maiTextBox.IsReadOnly = false;
             errormessage.Text = "";
             if (atoTextBox.Text == "")
             {
@@ -101,7 +103,11 @@ namespace yazaki.UserInterfaces
                 resultat.Content = Score;
 
                 if(isValide || tries == 10)
+                {
                     addResult();
+                    startButton.IsEnabled = false;
+                }
+                    
             }
             
         }
@@ -147,12 +153,16 @@ namespace yazaki.UserInterfaces
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             atoTextBox.IsReadOnly = true;
+            if (maiTextBox.Text == "")
+                maiTextBox.Focus();
             atoTextBox.Focusable = false;
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            atoTextBox.IsReadOnly = true;
+            maiTextBox.IsReadOnly = true;
+            if (atoTextBox.Text == "")
+                atoTextBox.Focus();
             maiTextBox.Focusable = false;
         }
 
