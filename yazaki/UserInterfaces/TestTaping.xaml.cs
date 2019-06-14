@@ -226,14 +226,12 @@ namespace yazaki.UserInterfaces
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            if (niveau == "Debutant")
+            NewTestWindow newTest = new NewTestWindow();
+            newTest.Owner = this;
+            if (newTest.ShowDialog() == true)
             {
-                new TestTaping("Intérmediare", operateur, formateur);
-            }
-            else if (niveau == "Intérmediare")
-            {
-                new TestTaping("Avancé", operateur, formateur);
+                new TestTaping(newTest.level, newTest.operateur, formateur);
+                this.Close();
             }
         }
 
