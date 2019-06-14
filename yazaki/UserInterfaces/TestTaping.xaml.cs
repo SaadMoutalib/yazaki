@@ -135,9 +135,6 @@ namespace yazaki.UserInterfaces
 
         }
 
-       
-
-
         void DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string test = port.ReadLine();
@@ -200,12 +197,17 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            //port.Write("STOP");
-            this.Close();
-            Start = false; 
-            if (port != null)
-             port.Close(); 
-            
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                //port.Write("STOP");
+                this.Close();
+                Start = false;
+                if (port != null)
+                    port.Close();
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

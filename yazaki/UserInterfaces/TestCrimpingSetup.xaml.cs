@@ -55,6 +55,8 @@ namespace yazaki.UserInterfaces
         {
             atoTextBox.IsReadOnly = false;
             maiTextBox.IsReadOnly = false;
+            atoTextBox.Focusable = true;
+            maiTextBox.Focusable = true;
             errormessage.Text = "";
             if (atoTextBox.Text == "")
             {
@@ -109,7 +111,10 @@ namespace yazaki.UserInterfaces
                 }
                     
             }
-            
+
+            maiTextBox.Text = "";
+            atoTextBox.Text = "";
+
         }
 
         private void addResult()
@@ -147,7 +152,12 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                this.Close();
+            }
         }
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)

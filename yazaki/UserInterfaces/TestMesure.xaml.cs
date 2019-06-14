@@ -64,8 +64,7 @@ namespace yazaki.UserInterfaces
 
         private void StartMethod()
         {
-            atoTextBox.IsReadOnly = false;
-            maiTextBox.IsReadOnly = false;
+            
             errormessage.Text = "";
             if (list.SelectedItem as Produit == null)
             {
@@ -182,7 +181,12 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                this.Close();
+            }
         }
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -205,6 +209,10 @@ namespace yazaki.UserInterfaces
         {
             maiTextBox.Text = "";
             atoTextBox.Text = "";
+            atoTextBox.IsReadOnly = false;
+            maiTextBox.IsReadOnly = false;
+            atoTextBox.Focusable = true;
+            maiTextBox.Focusable = true;
             atoTextBox.Focus();
         }
     }

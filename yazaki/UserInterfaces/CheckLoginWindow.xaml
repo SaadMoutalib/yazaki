@@ -1,4 +1,4 @@
-﻿<Window x:Class="yazaki.UserInterfaces.OptionsWindow"
+﻿<Window x:Class="yazaki.UserInterfaces.CheckLoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,19 +6,17 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:yazaki.UserInterfaces"
         mc:Ignorable="d"
-        Title="Options" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Height="200" Width="300" Icon="../Assets/COG-icon.png">
+        Title="Options" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Height="150" Width="300" Icon="../Assets/COG-icon.png">
     <Grid Background="White" Margin="10">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
         </Grid.Effect>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Margin="10" Grid.Row="0">
-            <ComboBox  ItemsSource="{Binding}" materialDesign:HintAssist.Hint="Port"  FontFamily="Champagne &amp; Limousines" FontSize="12" Name="portsCombo" IsEditable="True"/>
+       
+        <StackPanel Margin="10 20 10 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <PasswordBox  Width="250" Margin="5 0 0 5" materialDesign:HintAssist.Hint="MOT DE PASSE" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="passwordBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+            <TextBlock Height="20" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Center" Width="auto"  OpacityMask="Crimson" Foreground="#FFE5572C" Opacity="0.8" TextAlignment="Center"  />
         </StackPanel>
-        <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+        <StackPanel Margin="10" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <Button Margin="0 0 5 0" FontSize="10" IsDefault="True" Width="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="VALIDER" Name="loginButton" Click="validerButton_Click"/>
             <Button Margin="5 0 0 0" FontSize="10"  Width="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="QUITTER" Background="#FFEE2424" BorderBrush="#FFBA2929" Name="exitButton" Click="ExitButton_Click"/>
         </StackPanel>
