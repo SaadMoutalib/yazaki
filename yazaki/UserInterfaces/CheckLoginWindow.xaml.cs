@@ -12,28 +12,34 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using yazaki.Data;
 
 namespace yazaki.UserInterfaces
 {
     /// <summary>
     /// Interaction logic for OptionsWindow.xaml
     /// </summary>
-    public partial class OptionsWindow : Window
+    public partial class CheckLoginWindow : Window
     {
-
-        public OptionsWindow()
+        private Formateurs formateur;
+        public CheckLoginWindow(Formateurs _formateur)
         {
+            formateur = _formateur;
             InitializeComponent();
             string[] ports = SerialPort.GetPortNames();
-            portsCombo.ItemsSource = ports;
         }
 
         public string Port { set; get; }
 
         private void validerButton_Click(object sender, RoutedEventArgs e)
         {
-            Port = portsCombo.Text;
-            this.DialogResult = true;
+            if(passwordBox.Password == formateur.password)
+            {
+                this.DialogResult = true;
+            }
+            else{
+                errormessage.Text = "Mot de passe incorrect";
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

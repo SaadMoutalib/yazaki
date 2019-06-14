@@ -206,6 +206,9 @@
     </Compile>
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="UserInterfaces\CheckLoginWindow.xaml.cs">
+      <DependentUpon>CheckLoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterfaces\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserInterfaces\CheckLoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserInterfaces\OptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -57,6 +57,7 @@ namespace yazaki.UserInterfaces
         private void optionsButton_Click(object sender, RoutedEventArgs e)
         {
             OptionsWindow option = new OptionsWindow();
+            option.Owner = this;
             if (option.ShowDialog() == true)
             {
                 Options.PORT = option.Port;

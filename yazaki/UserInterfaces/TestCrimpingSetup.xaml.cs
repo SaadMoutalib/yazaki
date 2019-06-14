@@ -109,11 +109,11 @@ namespace yazaki.UserInterfaces
                     addResult();
                     startButton.IsEnabled = false;
                 }
-
                     
             }
-            atoTextBox.Text = "";
+
             maiTextBox.Text = "";
+            atoTextBox.Text = "";
 
         }
 
@@ -121,10 +121,10 @@ namespace yazaki.UserInterfaces
         {
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Crimping_Setup";
+            test.type = "Mesure";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.nom_test = "Crimping_Setup";
+            test.nom_test = "Mesure";
             test.resultat = Score;
             if (affichage == "Valide" )
             {
@@ -152,7 +152,12 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                this.Close();
+            }
         }
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)

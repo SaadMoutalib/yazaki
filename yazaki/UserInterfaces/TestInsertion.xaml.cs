@@ -401,9 +401,15 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            if (port != null)
-                port.Close();
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                this.Close();
+                if (port != null)
+                    port.Close();
+            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
