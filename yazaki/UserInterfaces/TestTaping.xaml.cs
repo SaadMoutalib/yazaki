@@ -93,14 +93,16 @@ namespace yazaki.UserInterfaces
             {
                 //port.Write("STOP");
                 Start = false;
-                restartButton.Visibility = Visibility.Visible;
                 timer.Stop();
                 port.Close();
                 
-                if(Score >= target && niveau != "Avancé")
+                if(Score >= target )
                 {
+                    restartButton.Visibility = Visibility.Collapsed;
                     addResult();
-                    next.Visibility = Visibility.Visible;
+                    if (niveau != "Avancé")
+                    { next.Visibility = Visibility.Visible; }
+                    NextCandidat.Visibility = Visibility.Visible;
                 }
                 if(Score < target && tries>0)
                 {
@@ -128,7 +130,7 @@ namespace yazaki.UserInterfaces
 
         public void StartMethod()
         {
-            //port.Write("START");
+            port.Write("START");
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += timer_Tick;
@@ -224,6 +226,7 @@ namespace yazaki.UserInterfaces
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             if (niveau == "Debutant")
             {
                 new TestTaping("Intérmediare", operateur, formateur);

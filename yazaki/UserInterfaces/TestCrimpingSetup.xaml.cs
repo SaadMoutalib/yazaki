@@ -125,7 +125,7 @@ namespace yazaki.UserInterfaces
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Mesure";
-            test.resultat = Score;
+            test.resultat = (Score/8)*100;
             if (affichage == "Valide" )
             {
                 test.passed = true;

@@ -62,6 +62,9 @@
                 <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail ! Passer au niveau suivant" ></Label>
                 <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant" Click="Button_Click"  Background="#FF04A629"></Button>
             </StackPanel>
+            <StackPanel Name="NextCandidat" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Button Width="275" Height="50" FontSize="30" Content="Candidat suivant" Click="Button_Click"  Background="#FFF35121"></Button>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

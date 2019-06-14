@@ -414,6 +414,7 @@ namespace yazaki.UserInterfaces
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             if (niveau == "Debutant")
             {
                 new TestInsertion("Intérmediare", operateur, formateur);
