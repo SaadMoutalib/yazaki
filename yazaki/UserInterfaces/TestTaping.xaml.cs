@@ -91,17 +91,22 @@ namespace yazaki.UserInterfaces
             }
             else
             {
+                //port.Write("STOP");
                 Start = false;
                 restartButton.Visibility = Visibility.Visible;
                 timer.Stop();
                 port.Close();
-                tries--;
+                
                 if(Score >= target && niveau != "Avancé")
                 {
                     addResult();
                     next.Visibility = Visibility.Visible;
                 }
-                
+                if(Score < target && tries>0)
+                {
+                    restartButton.Visibility = Visibility.Visible;
+                    tries--;
+                }
             }
 
             LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
@@ -123,7 +128,7 @@ namespace yazaki.UserInterfaces
 
         public void StartMethod()
         {
-            
+            //port.Write("START");
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += timer_Tick;
@@ -134,10 +139,14 @@ namespace yazaki.UserInterfaces
             pgBar.Maximum = time;
 
         }
+        public void Resettest()
+        {
+            startButton.IsEnabled = true;
+            time = 3600;
+            pgBar.Value = 0;
 
+        }
        
-
-
         void DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string test = port.ReadLine();
@@ -153,8 +162,6 @@ namespace yazaki.UserInterfaces
             if(test == "OUT")
             {
                 Score++;
-                //Vitesse = 1 / (time2/6000) ;
-                //time2 = 0;
             }
 
             this.Dispatcher.Invoke(() =>
@@ -212,16 +219,17 @@ namespace yazaki.UserInterfaces
         {
             if (niveau == "Debutant")
             {
-                new TestInsertion("Intérmediare", operateur, formateur);
+                new TestTaping("Intérmediare", operateur, formateur);
             }
             else if (niveau == "Intérmediare")
             {
-                new TestInsertion("Avancé", operateur, formateur);
+                new TestTaping("Avancé", operateur, formateur);
             }
         }
 
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
+            Resettest();
             this.Dispatcher.Invoke(() =>
             {
                 startButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));

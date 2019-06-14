@@ -55,6 +55,8 @@ namespace yazaki.UserInterfaces
         {
             atoTextBox.IsReadOnly = false;
             maiTextBox.IsReadOnly = false;
+            atoTextBox.Focusable = true;
+            maiTextBox.Focusable = true;
             errormessage.Text = "";
             if (atoTextBox.Text == "")
             {
@@ -107,19 +109,22 @@ namespace yazaki.UserInterfaces
                     addResult();
                     startButton.IsEnabled = false;
                 }
+
                     
             }
-            
+            atoTextBox.Text = "";
+            maiTextBox.Text = "";
+
         }
 
         private void addResult()
         {
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Mesure";
+            test.type = "Crimping_Setup";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.nom_test = "Mesure";
+            test.nom_test = "Crimping_Setup";
             test.resultat = Score;
             if (affichage == "Valide" )
             {
