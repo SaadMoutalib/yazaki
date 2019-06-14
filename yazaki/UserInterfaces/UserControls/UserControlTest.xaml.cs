@@ -49,7 +49,7 @@ namespace yazaki.UserInterfaces.UserControls
             }else if (type.SelectedIndex == -1)
             {
                 errormessage.Text = "Inserez tout les champs";
-            }else if (niveau.SelectedIndex == -1 &&  type.Text != "Mesure")
+            }else if (niveau.SelectedIndex == -1 &&  type.Text != "Mesure" && type.Text != "Crimping Setup")
             {
                 errormessage.Text = "Inserez tout les champs";
             }
@@ -71,6 +71,10 @@ namespace yazaki.UserInterfaces.UserControls
                 {
                     new TestMesure(operateur, formateur).Show();
                 }
+                else if(type.Text == "Crimping Setup")
+                {
+                    new TestCrimpingSetup(operateur, formateur).Show();
+                }
             }
             
         }
@@ -79,7 +83,7 @@ namespace yazaki.UserInterfaces.UserControls
         {
             string text = (e.AddedItems[0] as ComboBoxItem).Content as string;
 
-            if(text == "Mesure")
+            if(text == "Mesure" || text == "Crimping Setup")
             {
                 niveau.Visibility = Visibility.Collapsed;
             }else if (niveau.Visibility == Visibility.Collapsed)

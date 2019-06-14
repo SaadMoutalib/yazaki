@@ -28,6 +28,7 @@
                         <ComboBoxItem>Crimping</ComboBoxItem>
                         <ComboBoxItem>Taping</ComboBoxItem>
                         <ComboBoxItem>Mesure</ComboBoxItem>
+                        <ComboBoxItem>Crimping Setup</ComboBoxItem>
                     </ComboBox>
                     <ComboBox Grid.Row="2" Name="niveau" Margin="0,10" materialDesign:HintAssist.Hint="Niveau" IsEditable="True">
                         <ComboBoxItem>Debutant</ComboBoxItem>

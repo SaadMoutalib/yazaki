@@ -15,6 +15,14 @@ namespace yazaki.Data
         public double min_ato { get; set; }
         public double max_mai { get; set; }
         public double min_mai { get; set; }
+        public String fullRef
+        {
+            get
+            {
+                return reference_Terminal + " " + Code_Inventaire_Applicateur + " " + Section_fil;
+            }
+        }
+        public int tries;
 
         public Produit(string _reference_Terminal, string _Code_Inventaire_Applicateur, string _Section_fil , double _max_ato, double _min_ato, double _max_mai, double _min_mai)
         {
