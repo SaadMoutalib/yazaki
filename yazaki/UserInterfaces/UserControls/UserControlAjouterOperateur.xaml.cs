@@ -78,6 +78,7 @@ namespace yazaki.UserInterfaces.UserControls
                     {
                         unitOfWork.Operateurs.Add(oper);
                         unitOfWork.Save();
+
                         succesmessage.Text = "Opérateur ajouter avec succès";
 
                         return oper;

@@ -44,7 +44,7 @@
             </StackPanel>
             <StackPanel Margin="0 0 100 0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
-                <Button Visibility="Collapsed" Margin="10" Content="try again" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="27" Name="restartButton" Click="RestartButton_Click"  Background="#FFF3D621" BorderBrush="#FFF3D621" />
+                <Button Visibility="Collapsed" Margin="10" Content="try again" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="27" Name="restartButton"   Background="#FFF3D621" BorderBrush="#FFF3D621" />
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -52,7 +52,7 @@
                     <Label Content="Tour" FontWeight="Bold"/>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="0" Name="lblVitesse"  FontSize="100" FontWeight="Bold"/>
-                        <Label Content="Tour " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
+                        <Label Name="tour" Content="Tour " FontSize="50" FontWeight="Bold" VerticalContentAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
 
@@ -60,10 +60,10 @@
             </StackPanel>
             <StackPanel Name="next" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail ! Passer au niveau suivant" ></Label>
-                <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant" Click="Button_Click"  Background="#FF04A629"></Button>
+                <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant"   Background="#FF04A629"></Button>
             </StackPanel>
             <StackPanel Name="NextCandidat" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                <Button Width="275" Height="50" FontSize="30" Content="Candidat suivant" Click="Button_Click"  Background="#FFF35121"></Button>
+                <Button Width="275" Height="50" FontSize="30" Content="Candidat suivant"  Background="#FFF35121"></Button>
             </StackPanel>
         </Grid>
     </DockPanel>
