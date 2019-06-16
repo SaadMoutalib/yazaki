@@ -26,10 +26,7 @@ namespace yazaki.UserInterfaces
         {
             formateur = _formateur;
             InitializeComponent();
-            string[] ports = SerialPort.GetPortNames();
         }
-
-        public string Port { set; get; }
 
         private void validerButton_Click(object sender, RoutedEventArgs e)
         {
