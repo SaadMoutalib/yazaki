@@ -26,6 +26,7 @@ namespace yazaki.UserInterfaces
         {
             formateur = _formateur;
             InitializeComponent();
+            passwordBox.Focus();
         }
 
         private void validerButton_Click(object sender, RoutedEventArgs e)

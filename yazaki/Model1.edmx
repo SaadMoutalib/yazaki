@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="None" Nullable="false" />
           <Property Name="nom" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="prenom" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>

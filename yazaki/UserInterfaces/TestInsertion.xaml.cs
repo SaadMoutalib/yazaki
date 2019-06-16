@@ -57,7 +57,7 @@ namespace yazaki.UserInterfaces
             if (niveau == "Debutant")
             {
                 time = 3600;
-            }else if(niveau == "Intérmediare")
+            }else if(niveau == "Intérmediaire")
             {
                 time = 2400;
             }

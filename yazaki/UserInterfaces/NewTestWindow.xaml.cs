@@ -27,7 +27,6 @@ namespace yazaki.UserInterfaces
         public NewTestWindow()
         {
             InitializeComponent();
-            string[] ports = SerialPort.GetPortNames();
             bindComboBox();
         }
 

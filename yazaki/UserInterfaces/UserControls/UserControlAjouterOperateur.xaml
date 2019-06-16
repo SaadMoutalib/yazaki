@@ -12,24 +12,18 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="White" Height="600" Width="1000">
                 <StackPanel.Effect>
                     <DropShadowEffect BlurRadius="15" Direction="0" ShadowDepth="1" Color="#FF292929"/>
-                </StackPanel.Effect> 
-                <Grid VerticalAlignment="Top" Margin="20,20" >
-                    <Label Content="Ajouter Candidat" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                </StackPanel.Effect>
+                <Label Margin="0 10 0 0" Content="Ajouter Candidat" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Gray" FontSize="18"/>
+                <Grid VerticalAlignment="Top" Margin="20,0" >
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="15">
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Matricul" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="0" Margin="0 10 5 10" materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="nomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                                <TextBox Grid.Column="1" Margin="5 10 0 10"  materialDesign:HintAssist.Hint="Prenom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="prenomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                            </Grid>
+                            <TextBox PreviewTextInput="IdTextBox_PreviewTextInput" Margin="0,10" materialDesign:HintAssist.Hint="Matricul" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="idTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            <TextBox Grid.Column="0" Margin="0 10 5 10" materialDesign:HintAssist.Hint="Nom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="nomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                            <TextBox Grid.Column="1" Margin="5 10 0 10"  materialDesign:HintAssist.Hint="Prenom" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="prenomTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
                             <StackPanel Height="40" Margin="0,10" Orientation="Horizontal">
                             <RadioButton Name="male" Margin="0 20 10 0" GroupName="Sexe" Style="{StaticResource MaterialDesignRadioButton}">Male
                             </RadioButton>
@@ -43,10 +37,11 @@
                             <DatePicker Margin="0,10" materialDesign:HintAssist.Hint="Date de naissance" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="dateOfBirth"/>
                             <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Ville" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="villeTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
                             <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Adresse" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="adresseTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
-                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="emailTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
+                           
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="15">
+                            <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="emailTextBox" CaretBrush="#FFEB4242" SelectionBrush="#FFEB4242"/>
                             <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Tel" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="telTextBox" SelectionBrush="#FFEB4242" CaretBrush="#FFEB4242"/>
 
                             <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Code Postal" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="postalCode" SelectionBrush="#FFEB4242" CaretBrush="#FFEB4242"/>
@@ -55,7 +50,6 @@
                             <DatePicker Margin="0,10" materialDesign:HintAssist.Hint="Date d'obtention du diplôme " Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="graduationDate"/>
                             <DatePicker Margin="0,10" materialDesign:HintAssist.Hint="Date d'embauche" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="dateOfEmployment"/>
                             <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Departement" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="departementName" SelectionBrush="#FFEB4242" CaretBrush="#FFEB4242"/>
-                            <DatePicker Margin="0,10" materialDesign:HintAssist.Hint="Date du debut de travail" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontFamily="Champagne &amp; Limousines" FontSize="12" Name="dateOfStartingWorking" />
                         </StackPanel>
                     </Grid>
                 </Grid>

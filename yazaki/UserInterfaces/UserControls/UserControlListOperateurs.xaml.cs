@@ -24,10 +24,12 @@ namespace yazaki.UserInterfaces.UserControls
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             var operateur = opGrid.SelectedItem as Operateurs;
             if (operateur != null)
             {
                 testGrid.ItemsSource = operateur.Tests;
+                testGrid.Visibility = Visibility.Visible;
                
             }
         }

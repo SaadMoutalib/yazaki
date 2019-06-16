@@ -43,34 +43,39 @@ namespace yazaki.UserInterfaces.UserControls
                 errormessage.Text = "Entrez un Prenom";
                 prenomTextBox.Focus();
             }
+            else if (idTextBox.Text.Length == 0)
+            {
+                errormessage.Text = "Entrez un Matricul";
+                idTextBox.Focus();
+            }
             else
             {
+                oper.Id = Int32.Parse(idTextBox.Text);
+                oper.nom = nomTextBox.Text;
+                oper.prenom = prenomTextBox.Text;
                 cord.Adresse = adresseTextBox.Text;
                 if (male.IsChecked == true)
                 {
                     cord.Sexe = "M";
                 }
-                else
+                else if (female.IsChecked == true)
                 {
                     cord.Sexe = "F";
                 }
-
+                cord.id = oper.Id;
                 cord.civilStatus = civilStatus.Text;
                 cord.dateOfBirth = dateOfBirth.SelectedDate;
                 cord.dateOfEmployment = dateOfEmployment.SelectedDate;
-                cord.dateOfStartingWorkInDep = dateOfStartingWorking.SelectedDate;
                 cord.departementName = departementName.Text;
                 cord.graduationDate = graduationDate.SelectedDate;
                 cord.educationLevel = educationlevel.Text;
                 cord.Ville = villeTextBox.Text;
                 cord.Email = emailTextBox.Text;
                 cord.Tel = telTextBox.Text;
-                cord.postalCode = Int32.Parse(postalCode.Text);
+                if(postalCode.Text!="")
+                    cord.postalCode = Int32.Parse(postalCode.Text);
                 cord.jobTitle = jobTitle.Text;
                 cord.Operateur = oper;
-                oper.Id = Convert.ToInt32(idTextBox.Text);
-                oper.nom = nomTextBox.Text;
-                oper.prenom = prenomTextBox.Text;
                 oper.Coordonnee = cord;
                 using (var unitOfWork = new UnitOfWork(new yazakiDBEntities()))
                 {
