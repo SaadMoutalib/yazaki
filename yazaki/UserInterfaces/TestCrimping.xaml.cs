@@ -49,14 +49,17 @@ namespace yazaki.UserInterfaces
             if (niveau == "Debutant")
             {
                 time = 3600;
+                Niveau.Content = "Débutant";
             }
             else if (niveau == "Intérmediaire")
             {
                 time = 2400;
+                Niveau.Content = "Intérmediaire";
             }
             else
             {
                 time = 800;
+                Niveau.Content = "Avancé";
             }
         }
 
@@ -80,6 +83,7 @@ namespace yazaki.UserInterfaces
                     });
                 }
                 addResult();
+
             }
 
             LinearGradientBrush myLinearGradientBrush = new LinearGradientBrush();
@@ -166,13 +170,14 @@ namespace yazaki.UserInterfaces
 
         private void addResult()
         {
+            double res = (Score / (double)10) * 100;
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Cramping";
-            test.nom_test = "Cramping";
+            test.type = "Crimping";
+            test.nom_test = "Crimping";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.resultat = Score;
+            test.resultat = Math.Round(res,2);
             if (Score > 10)
             {
                 test.passed = true;
@@ -200,9 +205,14 @@ namespace yazaki.UserInterfaces
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            if (port != null)
-                port.Close();
+            CheckLoginWindow option = new CheckLoginWindow(formateur);
+            option.Owner = this;
+            if (option.ShowDialog() == true)
+            {
+                this.Close();
+                if (port != null)
+                    port.Close();
+            }
         }
     }
 }

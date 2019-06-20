@@ -42,7 +42,7 @@ namespace yazaki.UserInterfaces
             nomLbl.Content = op.FullName;
             IDLbl.Content = op.Id;
 
-            produit = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
+            produit = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.0);
             this.DataContext = produit;
         }
 
@@ -119,13 +119,14 @@ namespace yazaki.UserInterfaces
 
         private void addResult()
         {
+            double res=(Score / (double)8) * 100;
             Test test = new Test();
             test.date = DateTime.Today;
             test.type = "Mesure";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Mesure";
-            test.resultat = (Score/8)*100;
+            test.resultat = Math.Round(res,2);
             if (affichage == "Valide" )
             {
                 test.passed = true;
@@ -162,18 +163,27 @@ namespace yazaki.UserInterfaces
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            atoTextBox.IsReadOnly = true;
-            if (maiTextBox.Text == "")
+            if (maiTextBox.Text == "" && atoTextBox.Text.Length > 4)
+            {
+                atoTextBox.IsReadOnly = true;
+                atoTextBox.Focusable = false;
                 maiTextBox.Focus();
-            atoTextBox.Focusable = false;
+            }
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            maiTextBox.IsReadOnly = true;
-            if (atoTextBox.Text == "")
+            if (atoTextBox.Text == "" && maiTextBox.Text.Length > 4)
+            {
+                maiTextBox.IsReadOnly = true;
+                maiTextBox.Focusable = false;
                 atoTextBox.Focus();
-            maiTextBox.Focusable = false;
+            }
+            if (maiTextBox.Text.Length > 4 && atoTextBox.Text.Length > 4)
+            {
+                maiTextBox.IsReadOnly = true;
+                maiTextBox.Focusable = false;
+            }
         }
 
     }

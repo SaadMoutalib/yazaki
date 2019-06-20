@@ -10,7 +10,7 @@
     <Window.Resources>
         <DataTemplate x:Key="listBoxTemplate">
             <StackPanel Margin="5" Orientation="Horizontal" >
-              <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
                     <Label Content="Reference Terminal" FontSize="10"/>
                     <TextBlock Margin="10" Text="{Binding reference_Terminal}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
                 </StackPanel>

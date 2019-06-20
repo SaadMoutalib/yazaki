@@ -51,21 +51,28 @@ namespace yazaki.UserInterfaces
             brush = pgBar.Foreground as LinearGradientBrush;
           
             OpenPort();
-
+            Essaies.Content = tries;
             if (niveau == "Debutant")
             {
                 target = 110;
                 time = 3600;
+                Niveau.Content = "Débutant";
+                Objectif.Content = "110 tour";
+
             }
             else if (niveau == "Intérmediaire")
             {
                 target = 130;
                 time = 3600;
+                Niveau.Content = "Intérmediaire";
+                Objectif.Content = "130 tour";
             }
             else
             {
                 target = 180;
                 time = 3600;
+                Niveau.Content = "Avancé";
+                Objectif.Content = "180 tour";
             }
             pgBar.Maximum = time;
         }
@@ -161,11 +168,12 @@ namespace yazaki.UserInterfaces
             startButton.Visibility = Visibility.Visible;
             startButton.Content = "Start";
             startButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3")); ;
-            time = 1600;
+            time = 3600;
             pgBar.Value = 0;
             pgBar.Maximum = time;
             Score = 0;
             tries--;
+            Essaies.Content = tries;
             lblVitesse.Content = Score;
             NextCandidat.Visibility = Visibility.Collapsed;
         }
@@ -199,14 +207,15 @@ namespace yazaki.UserInterfaces
 
         private void addResult()
         {
-            float res  = (Score / (float)target) * 100;
+            double res  = (Score / (double)target) * 100;
             Test test = new Test();
             test.date = DateTime.Now;
             test.type = "Taping";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Taping";
-            test.resultat = (float)Math.Round(res * 100f) / 100f;
+            test.resultat = Math.Round(res,2);
+                //(float)Math.Round(res * 100f,2) / 100f;
             if (res > 100)
             {
                 test.passed = true;

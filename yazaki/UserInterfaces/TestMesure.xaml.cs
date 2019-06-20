@@ -42,8 +42,8 @@ namespace yazaki.UserInterfaces
             IDLbl.Content = op.Id;
 
             produits = new List<Produit>();
-            Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65 , 1.1 , 1.04);
-            Produit p2 = new Produit("7116-4225-(02) SB", "1308 F026", "0.36", 2.85, 1.59, 1.1, 0.9);
+            Produit p1 = new Produit("7116-4288-(02) SB", "1308 E025", "0.35", 1.85, 1.65, 1.1, 1.0);
+            Produit p2 = new Produit("7116-4225-(02) SB", "1308 F026", "0.36", 1.85, 1.65, 1.1, 1.0);
             Produit p3 = new Produit("7116-4878-(05) SB", "1308 E027", "0.39", 1.85, 1.65, 1.1, 1.04);
             Produit p4 = new Produit("7116-4285-(02) SB", "1308 F028", "0.37", 2.85, 1.59, 1.1, 0.9);
             Produit p5 = new Produit("7116-4785-(02) SB", "1308 F029", "0.42", 2.85, 1.59, 1.1, 0.9);
@@ -148,18 +148,19 @@ namespace yazaki.UserInterfaces
 
         private void addResult()
         {
+            double res = (Score / (double)5) * 100;
             Test test = new Test();
             test.date = DateTime.Today;
-            test.type = "Mesure";
+            test.type = "Micrometre";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
-            test.nom_test = "Mesure";
-            test.resultat = Score;
-            if (affichage == "Valide" )
+            test.nom_test = "Micrometre";
+            test.resultat = Math.Round(res,2);
+            if (Score <= 5 )
             {
                 test.passed = true;
             }
-            else
+            else if(Score <5)
             {
                 test.passed = false;
             }
@@ -191,18 +192,32 @@ namespace yazaki.UserInterfaces
 
         private void AtoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            atoTextBox.IsReadOnly = true;
-            if(maiTextBox.Text=="")
+            
+            if(maiTextBox.Text=="" && atoTextBox.Text.Length > 4)
+            {
+                atoTextBox.IsReadOnly = true;
+                atoTextBox.Focusable = false;
                 maiTextBox.Focus();
-            atoTextBox.Focusable = false;
+            }
+
         }
 
         private void MaiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            maiTextBox.IsReadOnly = true;
-            if (atoTextBox.Text == "")
+            
+            if (atoTextBox.Text == "" && maiTextBox.Text.Length > 4)
+            {
+                maiTextBox.IsReadOnly = true;
+                maiTextBox.Focusable = false;
                 atoTextBox.Focus();
-            maiTextBox.Focusable = false;
+            }
+            if(maiTextBox.Text.Length > 4 && atoTextBox.Text.Length > 4)
+            {
+                maiTextBox.IsReadOnly = true;
+                maiTextBox.Focusable = false;
+            }
+                
+            
         }
 
         private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)

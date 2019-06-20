@@ -35,8 +35,11 @@
                 </ProgressBar.Foreground>
 
             </ProgressBar>
-
             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label Content="Niveau :"  Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="Niveau" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
+                <Label Content="Objectif :"  Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
+                <Label Name="Objectif" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
                 <Label Content="Candidat : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" />
                 <Label Name="nomLbl" Margin="5 5 100 5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="38" />
                 <Label Content="ID  : " Margin="5" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -46,6 +49,8 @@
                 <Button Margin="10" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="startButton" Click="startButton_Click"/>
                 <Button Visibility="Collapsed" Margin="10" Content="try again" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="27" Name="restartButton"  Click="RestartButton_Click" Background="#FFF3D621" BorderBrush="#FFF3D621" />
                 <Button  Margin="10" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="50" FontSize="30" Name="exitButton" Click="exitButton_Click" Background="#FFF35121" BorderBrush="#FFF36D21"/>
+                <Label Name="Essaies"  Margin="5" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label Content="Essais restants"   Margin="5" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Content="0" Name="lblVitesse"  FontSize="100" FontWeight="Bold"/>
@@ -53,7 +58,7 @@
             </StackPanel>
             
             <StackPanel Name="next" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail ! Passer au niveau suivant" ></Label>
+                <Label Margin="30 0 20 0" FontSize="25" FontWeight="Bold" Content="Bon travail! Passer au niveau suivant" ></Label>
                 <Button Width="250" Height="50" FontSize="30" Content="Niveau suivant" Click="NextLvl_Click"  Background="#FF04A629" Name="NextLvl"></Button>
             </StackPanel>
             <StackPanel Name="NextCandidat" Visibility="Collapsed" Orientation="Horizontal" Margin="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">

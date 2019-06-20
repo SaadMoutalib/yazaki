@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Data\Options.cs" />
+    <Compile Include="Data\partNumber.cs" />
     <Compile Include="Data\Produit.cs" />
     <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Formateurs.cs">
@@ -217,6 +218,9 @@
     </Compile>
     <Compile Include="UserInterfaces\TestCrimping.xaml.cs">
       <DependentUpon>TestCrimping.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\TestCutting.xaml.cs">
+      <DependentUpon>TestCutting.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterfaces\TestInsertion.xaml.cs">
       <DependentUpon>TestInsertion.xaml</DependentUpon>
@@ -273,6 +277,10 @@
     <Page Include="UserInterfaces\TestCrimping.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterfaces\TestCutting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterfaces\TestInsertion.xaml">
       <SubType>Designer</SubType>

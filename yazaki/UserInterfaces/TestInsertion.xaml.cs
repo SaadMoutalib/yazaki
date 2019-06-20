@@ -368,14 +368,15 @@ namespace yazaki.UserInterfaces
 
         private void addResult()
         {
+            double res = (Score / (double)10) * 100;
             Test test = new Test();
             test.date = DateTime.Today;
             test.type = "Insertion";
             test.id_form = formateur.Id;
             test.id_op = operateur.Id;
             test.nom_test = "Insertion";
-            test.resultat = (Score/10)*100;
-            if (Score == 100)
+            test.resultat = Math.Round(res,2);
+            if (Score == 10)
             {
                 test.passed = true;
             }
